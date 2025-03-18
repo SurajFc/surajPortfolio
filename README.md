@@ -120,4 +120,4 @@ I am a versatile software engineer with 4 years of industry experience, having s
 ---
 
 ### Portfolio  
-Visit my portfolio site: [surajPortfolio](https://github.com/SurajFc/surajPortfolio)  
+Visit my portfolio site: [surajPortfolio](https://surajfc.github.io/surajPortfolio/)  
