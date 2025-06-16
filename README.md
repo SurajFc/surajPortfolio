@@ -1,5 +1,5 @@
 # Suraj Thapa  
-## Software Engineer  
+## Senior Software Engineer  
 
 - **Email:** surajthapafc@gmail.com  
 - **Phone:** +91 9818479189 , +977 9811064680
