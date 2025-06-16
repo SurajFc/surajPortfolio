@@ -8,7 +8,7 @@
 ---
 
 ### About Me  
-I am a versatile software engineer with 4 years of industry experience, having successfully delivered complex technical projects utilizing a variety of technologies across front-end and back-end development. As a collaborative team member and effective problem solver, I am seeking an opportunity to contribute to a challenging environment where I can apply my skills to benefit your esteemed organization and further my own professional growth.
+I am a versatile software engineer with 5 years of industry experience, having successfully delivered complex technical projects utilizing a variety of technologies across front-end and back-end development. As a collaborative team member and effective problem solver, I am seeking an opportunity to contribute to a challenging environment where I can apply my skills to benefit your esteemed organization and further my own professional growth.
 
 ---
 
