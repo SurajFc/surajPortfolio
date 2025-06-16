@@ -21,7 +21,7 @@ I am a versatile software engineer with 5 years of industry experience, having s
 
 ### Experience  
 
-#### **Mindbrowser Inc - Associate Software Engineer (Remote)**  
+#### **Mindbrowser Inc - Software Engineer (Remote)**  
 **April 2021 - Present**  
 - Designed and developed a large-scale web application, featuring over 200 responsive pages utilizing ReactJS.  
 - Collaborated closely with client R&D teams to refine software designs and deliver innovative solutions.  
