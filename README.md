@@ -13,7 +13,7 @@ I am a versatile software engineer with 5 years of industry experience, having s
 ---
 
 ### Technologies  
-- **Frontend:** Javascript, ReactJS, Redux, HTML/CSS etc
+- **Frontend:** Javascript, ReactJS, Redux, Typescript, HTML/CSS etc
 - **Backend:** Python, Django, NestJs, PostgreSQL, MySQL etc  
 - **Other:** Linux, GraphQL, Stripe, AWS etc
 
