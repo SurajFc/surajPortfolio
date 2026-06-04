@@ -5,7 +5,8 @@ export const resumeData = {
   name: 'Suraj Thapa',
   title: 'Software Engineer',
   contact: {
-    email: 'surajfc48@gmail.com',
+    email: 'surajthapafc@gmail.com',
+    phone: '+91 9818479189',
     github: 'github.com/SurajFc',
     linkedin: 'linkedin.com/in/suraj4',
     stackoverflow: 'stackoverflow.com/users/12359814/surajfc',
