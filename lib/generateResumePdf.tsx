@@ -1,6 +1,5 @@
 // Builds the resume PDF in-browser using @react-pdf/renderer.
-// This module is only ever loaded via a dynamic import inside a click
-// handler, so it stays out of the static (server) render.
+// Only ever loaded via dynamic import on click — never in the server render.
 
 import {
   Document,
@@ -15,244 +14,204 @@ import {
 import { resumeData } from './resume'
 import { profilePhoto } from './profilePhoto'
 
-// Brand palette (mirrors the site's indigo theme)
-const HEADER_BG = '#1e1b4b' // deep indigo
-const ACCENT = '#4f46e5' // indigo-600
-const ACCENT_LIGHT = '#a5b4fc' // indigo-300
-const HEADING = '#111827' // near-black
-const BODY = '#374151' // gray-700
-const MUTED = '#6b7280' // gray-500
-const RULE = '#e5e7eb' // gray-200
-const SIDEBAR_BG = '#f8fafc' // slate-50
+const HEADER_BG   = '#1e1b4b'
+const ACCENT      = '#4f46e5'
+const ACCENT_LIGHT = '#a5b4fc'
+const HEADING     = '#111827'
+const BODY        = '#374151'
+const MUTED       = '#6b7280'
+const RULE        = '#e5e7eb'
 
-const PAGE_PADDING_X = 0
-const PAGE_PADDING_TOP = 0
-
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
+  // paddingTop applies to ALL pages — keeps page 2 from sticking to the top
   page: {
     fontFamily: 'Helvetica',
-    fontSize: 9.5,
+    fontSize: 8.8,
     color: BODY,
-    lineHeight: 1.45,
-    paddingBottom: 32,
+    lineHeight: 1.38,
+    paddingTop: 20,
+    paddingBottom: 22,
   },
 
-  /* Header band */
+  /* ── Header band ─────────────────────────────────────── */
   header: {
     backgroundColor: HEADER_BG,
-    paddingTop: 26,
-    paddingBottom: 22,
-    paddingHorizontal: 36,
-    marginBottom: 22,
+    paddingTop: 16,
+    paddingBottom: 14,
+    paddingHorizontal: 32,
+    marginBottom: 14,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: -20, // pull up into the paddingTop space so band still bleeds to top
   },
-  headerText: { flex: 1, paddingRight: 18 },
-  photo: {
-    width: 84,
-    height: 84,
-    borderRadius: 42,
-    objectFit: 'cover',
-    border: `2.5 solid ${ACCENT_LIGHT}`,
-  },
-  name: {
-    fontSize: 26,
-    fontFamily: 'Helvetica-Bold',
-    color: '#ffffff',
-    letterSpacing: 0.5,
-  },
-  title: {
-    fontSize: 11,
-    color: ACCENT_LIGHT,
-    marginTop: 3,
-    textTransform: 'uppercase',
-    letterSpacing: 2.5,
-  },
-  contactRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 12,
-    fontSize: 8.5,
-    color: '#cbd5e1',
-  },
-  contactItem: { color: '#cbd5e1', marginRight: 6 },
-  contactSep: { color: ACCENT_LIGHT, marginRight: 6 },
+  headerText: { flex: 1, paddingRight: 14 },
+  photo: { width: 76, height: 76, borderRadius: 38, objectFit: 'cover' },
+  name:  { fontSize: 24, fontFamily: 'Helvetica-Bold', color: '#ffffff', letterSpacing: 0.4 },
+  title: { fontSize: 9.5, color: ACCENT_LIGHT, marginTop: 2, textTransform: 'uppercase', letterSpacing: 2 },
+  contactRow: { flexDirection: 'row', flexWrap: 'wrap', marginTop: 8, fontSize: 7.8, color: '#cbd5e1' },
+  contactItem: { color: '#cbd5e1', marginRight: 4 },
+  contactSep:  { color: ACCENT_LIGHT, marginRight: 4 },
 
-  /* Two-column body */
-  body: { flexDirection: 'row', paddingHorizontal: 36 },
-  sidebar: { width: '34%', paddingRight: 18 },
-  main: { width: '66%', paddingLeft: 18, borderLeftWidth: 1, borderLeftColor: RULE },
+  /* ── Two-column body ─────────────────────────────────── */
+  body: { flexDirection: 'row', paddingHorizontal: 32 },
+  sidebar: { width: '33%', paddingRight: 14 },
+  main:    { width: '67%', paddingLeft: 14, borderLeftWidth: 1, borderLeftColor: RULE },
 
-  /* Section headings */
+  /* ── Section headings ────────────────────────────────── */
+  sectionWrap: { marginBottom: 11 },
   heading: {
-    fontSize: 10.5,
+    fontSize: 9.5,
     fontFamily: 'Helvetica-Bold',
     color: ACCENT,
     textTransform: 'uppercase',
-    letterSpacing: 1.3,
-    marginBottom: 7,
+    letterSpacing: 1.2,
+    marginBottom: 4,
   },
-  headingRule: {
-    height: 2,
-    width: 26,
-    backgroundColor: ACCENT,
-    marginBottom: 8,
-    marginTop: -4,
-  },
-  section: { marginBottom: 16 },
+  headingRule: { height: 1.5, width: 22, backgroundColor: ACCENT, marginBottom: 6 },
 
-  summary: { color: BODY },
-
-  /* Experience / education entries */
-  block: { marginBottom: 11 },
-  entryHeaderRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-  },
-  entryTitle: { fontSize: 10.5, fontFamily: 'Helvetica-Bold', color: HEADING },
-  entryRole: { fontSize: 9.5, color: ACCENT, marginTop: 1.5 },
-  entryDate: { fontSize: 8, color: MUTED, fontFamily: 'Helvetica-Bold' },
-  bulletRow: { flexDirection: 'row', marginTop: 3, paddingRight: 2 },
-  bulletDot: { color: ACCENT, marginRight: 5, fontFamily: 'Helvetica-Bold' },
+  /* ── Shared entry blocks ─────────────────────────────── */
+  block: { marginBottom: 7 },
+  entryRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' },
+  entryTitle: { fontSize: 9.5, fontFamily: 'Helvetica-Bold', color: HEADING },
+  entryRole:  { fontSize: 8.8, color: ACCENT, marginTop: 1 },
+  entryDate:  { fontSize: 7.5, color: MUTED, fontFamily: 'Helvetica-Bold' },
+  bulletRow:  { flexDirection: 'row', marginTop: 2, paddingRight: 2 },
+  bulletDot:  { color: ACCENT, marginRight: 4, fontFamily: 'Helvetica-Bold' },
   bulletText: { flex: 1, color: BODY },
 
-  /* Projects */
-  projectName: { fontSize: 10, fontFamily: 'Helvetica-Bold', color: HEADING },
-  projectTech: { fontSize: 8, color: ACCENT, marginTop: 1, fontFamily: 'Helvetica-Oblique' },
-  projectDesc: { color: BODY, marginTop: 2 },
+  /* ── Projects ────────────────────────────────────────── */
+  projectsGrid: { flexDirection: 'row', flexWrap: 'wrap' },
+  projectCell:  { width: '50%', paddingRight: 8, marginBottom: 7 },
+  projectName:  { fontSize: 9.2, fontFamily: 'Helvetica-Bold', color: HEADING },
+  projectTech:  { fontSize: 7.8, color: ACCENT, marginTop: 1, fontFamily: 'Helvetica-Oblique' },
+  projectDesc:  { color: BODY, marginTop: 1.5, fontSize: 8.5 },
 
-  /* Sidebar items */
-  sidebarBlock: { marginBottom: 5 },
-  skillCategory: {
-    fontSize: 9,
-    fontFamily: 'Helvetica-Bold',
-    color: HEADING,
-    marginBottom: 1.5,
-  },
-  skillItems: { color: BODY, fontSize: 8.8 },
-  eduSchool: { fontSize: 9.2, fontFamily: 'Helvetica-Bold', color: HEADING },
-  eduDegree: { fontSize: 8.8, color: ACCENT, marginTop: 1 },
-  eduDate: { fontSize: 8, color: MUTED, marginTop: 1 },
-  certRow: { flexDirection: 'row', marginBottom: 4 },
-  certText: { flex: 1, color: BODY, fontSize: 8.8 },
+  /* ── Sidebar items ───────────────────────────────────── */
+  skillBlock:   { marginBottom: 4 },
+  skillCat:     { fontSize: 8.8, fontFamily: 'Helvetica-Bold', color: HEADING, marginBottom: 1 },
+  skillItems:   { color: BODY, fontSize: 8.3 },
+  eduSchool:    { fontSize: 8.8, fontFamily: 'Helvetica-Bold', color: HEADING },
+  eduDegree:    { fontSize: 8.3, color: ACCENT, marginTop: 1 },
+  eduDate:      { fontSize: 7.5, color: MUTED, marginTop: 0.5 },
+  certRow:      { flexDirection: 'row', marginBottom: 3 },
+  certText:     { flex: 1, color: BODY, fontSize: 8.3 },
+
+  summary: { color: BODY },
 })
 
-function Heading({ children }: { children: string }) {
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <View>
-      <Text style={styles.heading}>{children}</Text>
-      <View style={styles.headingRule} />
+    <View style={s.sectionWrap}>
+      <Text style={s.heading}>{title}</Text>
+      <View style={s.headingRule} />
+      {children}
     </View>
   )
 }
 
 export function ResumeDocument() {
   const d = resumeData
-  const contactItems = [
-    { label: d.contact.email, href: `mailto:${d.contact.email}` },
-    { label: d.contact.phone, href: `tel:${d.contact.phone.replace(/\s+/g, '')}` },
-    { label: d.contact.github, href: `https://${d.contact.github}` },
-    { label: d.contact.linkedin, href: `https://${d.contact.linkedin}` },
+  const contacts = [
+    { label: d.contact.email,         href: `mailto:${d.contact.email}` },
+    { label: d.contact.phone,         href: `tel:${d.contact.phone.replace(/\s+/g, '')}` },
+    { label: d.contact.github,        href: `https://${d.contact.github}` },
+    { label: d.contact.linkedin,      href: `https://${d.contact.linkedin}` },
     { label: d.contact.stackoverflow, href: `https://${d.contact.stackoverflow}` },
   ]
 
   return (
     <Document title={`${d.name} — Resume`} author={d.name} subject={d.title}>
-      <Page size="A4" style={styles.page}>
-        {/* Header band */}
-        <View style={styles.header}>
-          <View style={styles.headerText}>
-            <Text style={styles.name}>{d.name}</Text>
-            <Text style={styles.title}>{d.title}</Text>
-            <View style={styles.contactRow}>
-              {contactItems.map((c, i) => (
+      <Page size="A4" style={s.page}>
+
+        {/* Header band — negative marginTop pulls it flush to the top edge */}
+        <View style={s.header}>
+          <View style={s.headerText}>
+            <Text style={s.name}>{d.name}</Text>
+            <Text style={s.title}>{d.title}</Text>
+            <View style={s.contactRow}>
+              {contacts.map((c, i) => (
                 <View key={c.href} style={{ flexDirection: 'row' }}>
-                  {i > 0 && <Text style={styles.contactSep}>|</Text>}
-                  <Link src={c.href} style={styles.contactItem}>
-                    {c.label}
-                  </Link>
+                  {i > 0 && <Text style={s.contactSep}>  |  </Text>}
+                  <Link src={c.href} style={s.contactItem}>{c.label}</Link>
                 </View>
               ))}
             </View>
           </View>
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <Image style={styles.photo} src={profilePhoto} />
+          <Image style={s.photo} src={profilePhoto} />
         </View>
 
-        {/* Body */}
-        <View style={styles.body}>
-          {/* Sidebar */}
-          <View style={styles.sidebar}>
-            <View style={styles.section}>
-              <Heading>Skills</Heading>
-              {d.skills.map((group) => (
-                <View key={group.category} style={styles.sidebarBlock}>
-                  <Text style={styles.skillCategory}>{group.category}</Text>
-                  <Text style={styles.skillItems}>{group.items}</Text>
+        {/* Two-column body */}
+        <View style={s.body}>
+
+          {/* ── Sidebar ── */}
+          <View style={s.sidebar}>
+            <Section title="Skills">
+              {d.skills.map((g) => (
+                <View key={g.category} style={s.skillBlock}>
+                  <Text style={s.skillCat}>{g.category}</Text>
+                  <Text style={s.skillItems}>{g.items}</Text>
                 </View>
               ))}
-            </View>
+            </Section>
 
-            <View style={styles.section}>
-              <Heading>Education</Heading>
-              {d.education.map((edu) => (
-                <View key={edu.school} style={styles.block} wrap={false}>
-                  <Text style={styles.eduSchool}>{edu.school}</Text>
-                  <Text style={styles.eduDegree}>{edu.degree}</Text>
-                  <Text style={styles.eduDate}>{edu.date}</Text>
+            <Section title="Education">
+              {d.education.map((e) => (
+                <View key={e.school} style={s.block} wrap={false}>
+                  <Text style={s.eduSchool}>{e.school}</Text>
+                  <Text style={s.eduDegree}>{e.degree}</Text>
+                  <Text style={s.eduDate}>{e.date}</Text>
                 </View>
               ))}
-            </View>
+            </Section>
 
-            <View style={styles.section}>
-              <Heading>Certifications</Heading>
+            <Section title="Certifications">
               {d.certifications.map((cert, i) => (
-                <View key={i} style={styles.certRow}>
-                  <Text style={styles.bulletDot}>•</Text>
-                  <Text style={styles.certText}>{cert}</Text>
+                <View key={i} style={s.certRow}>
+                  <Text style={s.bulletDot}>•</Text>
+                  <Text style={s.certText}>{cert}</Text>
                 </View>
               ))}
-            </View>
+            </Section>
           </View>
 
-          {/* Main column */}
-          <View style={styles.main}>
-            <View style={styles.section}>
-              <Heading>Profile</Heading>
-              <Text style={styles.summary}>{d.summary}</Text>
-            </View>
+          {/* ── Main column ── */}
+          <View style={s.main}>
+            <Section title="Profile">
+              <Text style={s.summary}>{d.summary}</Text>
+            </Section>
 
-            <View style={styles.section}>
-              <Heading>Experience</Heading>
+            <Section title="Experience">
               {d.experience.map((exp) => (
-                <View key={exp.company} style={styles.block} wrap={false}>
-                  <View style={styles.entryHeaderRow}>
-                    <Text style={styles.entryTitle}>{exp.company}</Text>
-                    <Text style={styles.entryDate}>{exp.date}</Text>
+                <View key={exp.company} style={s.block} wrap={false}>
+                  <View style={s.entryRow}>
+                    <Text style={s.entryTitle}>{exp.company}</Text>
+                    <Text style={s.entryDate}>{exp.date}</Text>
                   </View>
-                  <Text style={styles.entryRole}>{exp.role}</Text>
-                  {exp.bullets.map((bullet, i) => (
-                    <View key={i} style={styles.bulletRow}>
-                      <Text style={styles.bulletDot}>•</Text>
-                      <Text style={styles.bulletText}>{bullet}</Text>
+                  <Text style={s.entryRole}>{exp.role}</Text>
+                  {exp.bullets.map((b, i) => (
+                    <View key={i} style={s.bulletRow}>
+                      <Text style={s.bulletDot}>•</Text>
+                      <Text style={s.bulletText}>{b}</Text>
                     </View>
                   ))}
                 </View>
               ))}
-            </View>
+            </Section>
 
-            <View style={styles.section}>
-              <Heading>Projects</Heading>
-              {d.projects.map((proj) => (
-                <View key={proj.name} style={styles.block} wrap={false}>
-                  <Text style={styles.projectName}>{proj.name}</Text>
-                  <Text style={styles.projectTech}>{proj.tech}</Text>
-                  <Text style={styles.projectDesc}>{proj.description}</Text>
-                </View>
-              ))}
-            </View>
+            {/* Projects in a 2×2 grid to save vertical space */}
+            <Section title="Projects">
+              <View style={s.projectsGrid}>
+                {d.projects.map((proj) => (
+                  <View key={proj.name} style={s.projectCell} wrap={false}>
+                    <Text style={s.projectName}>{proj.name}</Text>
+                    <Text style={s.projectTech}>{proj.tech}</Text>
+                    <Text style={s.projectDesc}>{proj.description}</Text>
+                  </View>
+                ))}
+              </View>
+            </Section>
           </View>
         </View>
       </Page>

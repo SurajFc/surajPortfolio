@@ -44,28 +44,28 @@ export const resumeData = {
   ],
   projects: [
     {
+      name: 'WellPro',
+      tech: 'ReactJS, TypeScript, AI/LLM, NLP',
+      description:
+        'AI-native Intelligent Health Record (IHR) integrating EMRs, labs, and wearables; uses clinical LLMs and NLP to guide personalized wellness protocols.',
+    },
+    {
       name: 'PeriopMD',
       tech: 'ReactJS, Redux, MaterialUI, Stripe',
       description:
-        'Medical subscription portal where hospitals and practitioners register and receive test recommendations based on conditions and age.',
+        'Medical subscription portal for hospitals and practitioners with AI-driven test recommendations based on conditions and age.',
     },
     {
       name: 'TTA Connect',
       tech: 'ReactJS, Redux, MSAL, Twilio, JWT',
       description:
-        'Training solutions platform with a CMS and real-time talent-client chat via Twilio, secured with Azure authorization.',
+        'Training marketplace with CMS and real-time Twilio chat between talent and clients, secured via JWT and Azure authorization.',
     },
     {
       name: 'Trabus RippleGo',
       tech: 'ReactJS, Redux, GraphQL',
       description:
-        'Real-time river navigation tracking app delivering route guidance and instant alerts on river conditions and hazards.',
-    },
-    {
-      name: 'WellPro',
-      tech: 'ReactJS, TypeScript, AI/LLM, NLP',
-      description:
-        'AI-native Intelligent Health Record (IHR) platform integrating EMRs, labs, and wearables to guide data-driven wellness protocols.',
+        'Real-time river navigation tracker delivering route guidance and instant hazard alerts via a GraphQL interface.',
     },
   ],
   education: [
