@@ -48,6 +48,11 @@ export default function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     if (!nameRef.current) return
     const chars = nameRef.current.querySelectorAll('.char')
     gsap.fromTo(
@@ -104,7 +109,7 @@ export default function Hero() {
             {'Suraj'.split('').map((char, i) => (
               <span
                 key={`s-${i}`}
-                className="char inline-block bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent"
+                className="char inline-block bg-gradient-to-b from-slate-800 to-slate-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent"
               >
                 {char}
               </span>
@@ -140,7 +145,7 @@ export default function Hero() {
             </DownloadResumeButton>
             <a
               href="#projects"
-              className="px-8 py-3 border border-indigo-500/40 hover:border-indigo-400 text-slate-300 hover:text-white rounded-lg font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500/10"
+              className="px-8 py-3 border border-indigo-500/60 dark:border-indigo-500/40 hover:border-indigo-400 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white rounded-lg font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500/10"
             >
               View Projects
             </a>
