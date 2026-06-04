@@ -24,7 +24,10 @@ export default function Header() {
   useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+      if (window.scrollY < 100) setActiveSection('')
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
