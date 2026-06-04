@@ -70,7 +70,7 @@ export default function Terminal() {
   const [history, setHistory] = useState<string[]>([])
   const [histIdx, setHistIdx] = useState(-1)
   const [booted, setBooted] = useState(false)
-  const bottomRef = useRef<HTMLDivElement>(null)
+  const bodyRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   // Boot sequence
@@ -90,7 +90,9 @@ export default function Terminal() {
   }, [])
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    // Scroll only the terminal body, never the page (scrollIntoView would bubble to window)
+    const body = bodyRef.current
+    if (body) body.scrollTop = body.scrollHeight
   }, [lines])
 
   const runCommand = async (cmd: string) => {
@@ -162,7 +164,7 @@ export default function Terminal() {
       </div>
 
       {/* Body */}
-      <div className="bg-zinc-900/95 border border-white/10 border-t-0 rounded-b-xl p-3 sm:p-4 h-44 sm:h-64 overflow-y-auto font-mono text-xs sm:text-sm cursor-text">
+      <div ref={bodyRef} className="bg-zinc-900/95 border border-white/10 border-t-0 rounded-b-xl p-3 sm:p-4 h-44 sm:h-64 overflow-y-auto font-mono text-xs sm:text-sm cursor-text">
         {lines.map((line, i) => (
           <div
             key={i}
@@ -193,7 +195,6 @@ export default function Terminal() {
             />
           </div>
         )}
-        <div ref={bottomRef} />
       </div>
     </motion.div>
   )
