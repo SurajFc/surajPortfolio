@@ -40,12 +40,12 @@ const projects = [
     badge: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
   },
   {
-    title: 'Wellpro',
+    title: 'WellPro',
     image: '/images/project.jpg',
-    tech: ['React Native', 'Node.js', 'PostgreSQL'],
+    tech: ['ReactJS', 'TypeScript', 'AI / LLM', 'NLP', 'HIPAA SaaS'],
     description:
-      'A comprehensive health and wellness platform helping users track fitness goals, nutrition, and overall well-being with personalized recommendations and detailed progress analytics.',
-    link: '#',
+      'An AI-native Intelligent Health Record (IHR) platform for personalized medicine practitioners. Integrates data from EMRs, labs, and wearables, using clinical LLMs and NLP to summarize patient history, analyze biomarkers, and guide tailored, data-driven wellness protocols.',
+    link: 'https://wellpro.ai/',
     glow: 'group-hover:shadow-orange-500/20',
     border: 'hover:border-orange-500/40',
     badge: 'bg-orange-500/10 text-orange-300 border-orange-500/20',
