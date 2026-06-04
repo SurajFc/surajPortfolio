@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import DownloadResumeButton from './DownloadResumeButton'
+import Terminal from './Terminal'
 
 const ROLES = [
   'Software Engineer',
@@ -142,6 +143,8 @@ export default function Hero() {
             View Projects
           </a>
         </motion.div>
+
+        <Terminal />
       </div>
 
       {/* Scroll indicator */}

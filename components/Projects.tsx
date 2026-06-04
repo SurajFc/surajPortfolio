@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import SectionHeading from './SectionHeading'
 import { imgSrc } from '@/lib/imgSrc'
@@ -57,14 +57,28 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [7, -7]), { stiffness: 300, damping: 30 })
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-7, 7]), { stiffness: 300, damping: 30 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5)
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5)
+  }
+  const handleMouseLeave = () => { mouseX.set(0); mouseY.set(0) }
+
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: (index % 2) * 0.15 }}
-      whileHover={{ y: -6 }}
-      className={`group rounded-2xl overflow-hidden bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 ${project.border} transition-all duration-300 shadow-xl ${project.glow}`}
+      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', transformPerspective: 1000 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`group rounded-2xl overflow-hidden bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 ${project.border} transition-colors duration-300 shadow-xl ${project.glow}`}
     >
       <div className="relative h-52 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 group-hover:opacity-60 transition-opacity duration-300" />
