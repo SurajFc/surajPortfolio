@@ -75,14 +75,23 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative z-10 text-center px-4">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-indigo-400 font-mono text-base md:text-lg mb-5 tracking-widest"
+          className="flex items-center justify-center gap-4 mb-5"
         >
-          Hi there, I&apos;m
-        </motion.p>
+          <p className="text-indigo-400 font-mono text-base md:text-lg tracking-widest">
+            Hi there, I&apos;m
+          </p>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            Open to work
+          </span>
+        </motion.div>
 
         <h1
           ref={nameRef}
