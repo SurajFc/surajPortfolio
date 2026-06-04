@@ -48,27 +48,15 @@ export default function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
-    // Strip hash from URL (hash-based scroll ignores scrollRestoration)
+    // Browser scroll restoration is disabled inline in <head>. The only thing
+    // that previously dragged the page down on load was the terminal's boot
+    // scrollIntoView (now scoped to its own body). This is a clean safety reset:
+    // strip any stray hash and pin to top once after first paint.
     if (window.location.hash) {
       history.replaceState(null, document.title, window.location.pathname)
     }
-    // Force top repeatedly during the initial load window — beats browser
-    // scroll restoration and any late layout shifts that nudge the page down.
-    let count = 0
-    window.scrollTo(0, 0)
-    const id = setInterval(() => {
-      window.scrollTo(0, 0)
-      if (++count > 12) clearInterval(id) // ~12 frames over ~600ms
-    }, 50)
-    const stop = () => clearInterval(id)
-    // Let the user take over the moment they intentionally scroll/touch
-    window.addEventListener('wheel', stop, { once: true, passive: true })
-    window.addEventListener('touchmove', stop, { once: true, passive: true })
-    return () => {
-      clearInterval(id)
-      window.removeEventListener('wheel', stop)
-      window.removeEventListener('touchmove', stop)
-    }
+    const raf = requestAnimationFrame(() => window.scrollTo(0, 0))
+    return () => cancelAnimationFrame(raf)
   }, [])
 
   useEffect(() => {
