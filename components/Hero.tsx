@@ -60,7 +60,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
     >
       {/* Gradient orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -75,75 +75,79 @@ export default function Hero() {
       {/* Subtle grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-      <div className="relative z-10 text-center px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center justify-center gap-4 mb-5"
-        >
-          <p className="text-indigo-400 font-mono text-base md:text-lg tracking-widest">
-            Hi there, I&apos;m
-          </p>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            Open to work
-          </span>
-        </motion.div>
-
-        <h1
-          ref={nameRef}
-          aria-label="Suraj Thapa"
-          className="text-6xl md:text-8xl lg:text-9xl font-bold mb-4 overflow-hidden leading-none"
-        >
-          {'Suraj'.split('').map((char, i) => (
-            <span
-              key={`s-${i}`}
-              className="char inline-block bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent"
-            >
-              {char}
-            </span>
-          ))}
-          <span className="char inline-block">&nbsp;</span>
-          {'Thapa'.split('').map((char, i) => (
-            <span
-              key={`t-${i}`}
-              className="char inline-block bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-            >
-              {char}
-            </span>
-          ))}
-        </h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="text-xl md:text-3xl text-slate-400 mb-10 h-10 md:h-12 flex items-center justify-center"
-        >
-          <Typewriter />
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <DownloadResumeButton className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white rounded-lg font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5">
-            Download CV
-          </DownloadResumeButton>
-          <a
-            href="#projects"
-            className="px-8 py-3 border border-indigo-500/40 hover:border-indigo-400 text-slate-300 hover:text-white rounded-lg font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500/10"
+      <div className="relative z-10 w-full flex flex-col items-center px-4 py-24">
+        {/* Centered hero content */}
+        <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex items-center justify-center gap-4 mb-5"
           >
-            View Projects
-          </a>
-        </motion.div>
+            <p className="text-indigo-400 font-mono text-base md:text-lg tracking-widest">
+              Hi there, I&apos;m
+            </p>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              Open to work
+            </span>
+          </motion.div>
 
+          <h1
+            ref={nameRef}
+            aria-label="Suraj Thapa"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold mb-4 overflow-hidden leading-none"
+          >
+            {'Suraj'.split('').map((char, i) => (
+              <span
+                key={`s-${i}`}
+                className="char inline-block bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent"
+              >
+                {char}
+              </span>
+            ))}
+            <span className="char inline-block">&nbsp;</span>
+            {'Thapa'.split('').map((char, i) => (
+              <span
+                key={`t-${i}`}
+                className="char inline-block bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+              >
+                {char}
+              </span>
+            ))}
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="text-xl md:text-3xl text-slate-400 mb-10 h-10 md:h-12 flex items-center justify-center"
+          >
+            <Typewriter />
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <DownloadResumeButton className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white rounded-lg font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5">
+              Download CV
+            </DownloadResumeButton>
+            <a
+              href="#projects"
+              className="px-8 py-3 border border-indigo-500/40 hover:border-indigo-400 text-slate-300 hover:text-white rounded-lg font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500/10"
+            >
+              View Projects
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Terminal sits below the centered content, not affecting vertical centering */}
         <Terminal />
       </div>
 
