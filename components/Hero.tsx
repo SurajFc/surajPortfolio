@@ -1,9 +1,47 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import DownloadResumeButton from './DownloadResumeButton'
+
+const ROLES = [
+  'Software Engineer',
+  'Full Stack Developer',
+  'React Specialist',
+  'Problem Solver',
+]
+
+function Typewriter() {
+  const [roleIdx, setRoleIdx] = useState(0)
+  const [displayed, setDisplayed] = useState('')
+  const [deleting, setDeleting] = useState(false)
+
+  useEffect(() => {
+    const current = ROLES[roleIdx]
+    let timer: ReturnType<typeof setTimeout>
+
+    if (!deleting && displayed.length < current.length) {
+      timer = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 70)
+    } else if (!deleting && displayed.length === current.length) {
+      timer = setTimeout(() => setDeleting(true), 1800)
+    } else if (deleting && displayed.length > 0) {
+      timer = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40)
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false)
+      setRoleIdx((i) => (i + 1) % ROLES.length)
+    }
+
+    return () => clearTimeout(timer)
+  }, [displayed, deleting, roleIdx])
+
+  return (
+    <span>
+      {displayed}
+      <span className="inline-block w-0.5 h-6 md:h-8 bg-indigo-400 ml-0.5 align-middle animate-pulse" />
+    </span>
+  )
+}
 
 export default function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null)
@@ -74,9 +112,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="text-xl md:text-3xl text-slate-400 mb-10"
+          className="text-xl md:text-3xl text-slate-400 mb-10 h-10 md:h-12 flex items-center justify-center"
         >
-          Software Engineer
+          <Typewriter />
         </motion.p>
 
         <motion.div

@@ -12,7 +12,7 @@ export const resumeData = {
     stackoverflow: 'stackoverflow.com/users/12359814/surajfc',
   },
   summary:
-    'Versatile software engineer with 4+ years of industry experience, having successfully delivered complex technical projects across front-end and back-end development. A collaborative team member and effective problem solver seeking to contribute to a challenging environment.',
+    'Versatile software engineer with 5+ years of industry experience, having successfully delivered complex technical projects across front-end and back-end development. A collaborative team member and effective problem solver seeking to contribute to a challenging environment.',
   experience: [
     {
       company: 'Mindbrowser Inc',
