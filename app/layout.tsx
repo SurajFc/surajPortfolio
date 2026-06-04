@@ -68,7 +68,10 @@ export const metadata: Metadata = {
       'Software Engineer with 5+ years of full-stack experience in React, TypeScript, Django, NestJS and more. Available for new opportunities.',
     url: SITE_URL,
     siteName: 'Suraj Thapa Portfolio',
-    type: 'website',
+    type: 'profile',
+    firstName: 'Suraj',
+    lastName: 'Thapa',
+    username: 'SurajFc',
     locale: 'en_US',
     images: [
       {
