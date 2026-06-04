@@ -150,7 +150,7 @@ export default function Terminal() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.4 }}
-      className="hidden sm:block w-full max-w-2xl mx-auto mt-10"
+      className="block w-full max-w-2xl mx-auto mt-8 sm:mt-10"
       onClick={() => inputRef.current?.focus()}
     >
       {/* Title bar */}
@@ -162,7 +162,7 @@ export default function Terminal() {
       </div>
 
       {/* Body */}
-      <div className="bg-zinc-900/95 border border-white/10 border-t-0 rounded-b-xl p-4 h-64 overflow-y-auto font-mono text-sm cursor-text">
+      <div className="bg-zinc-900/95 border border-white/10 border-t-0 rounded-b-xl p-3 sm:p-4 h-44 sm:h-64 overflow-y-auto font-mono text-xs sm:text-sm cursor-text">
         {lines.map((line, i) => (
           <div
             key={i}
