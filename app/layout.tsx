@@ -5,6 +5,7 @@ import ScrollProgress from '@/components/ScrollProgress'
 import BackToTop from '@/components/BackToTop'
 import CursorSpotlight from '@/components/CursorSpotlight'
 import PageLoader from '@/components/PageLoader'
+import ParticleBackground from '@/components/ParticleBackground'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -130,6 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <ParticleBackground />
           <PageLoader />
           <ScrollProgress />
           <CursorSpotlight />
