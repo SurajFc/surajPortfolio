@@ -21,18 +21,27 @@ const LANG_COLORS: Record<string, string> = {
   Vue: 'bg-emerald-400',
 }
 
+// Update this list to match your pinned repos on github.com/SurajFc
+const PINNED_REPOS = [
+  'surajPortfolio',
+  'smart-on-fhir-app',
+  'balajee-erp',
+  'react-fhir-forms',
+  'NestJsAuth',
+  'Django-JWT-boilerplate',
+]
+
 async function fetchRepos(): Promise<Repo[]> {
   try {
-    const res = await fetch(
-      'https://api.github.com/users/SurajFc/repos?sort=updated&per_page=50&type=owner',
-      {
-        headers: { Accept: 'application/vnd.github+json' },
-        cache: 'force-cache',
-      }
+    const results = await Promise.all(
+      PINNED_REPOS.map((name) =>
+        fetch(`https://api.github.com/repos/SurajFc/${name}`, {
+          headers: { Accept: 'application/vnd.github+json' },
+          cache: 'force-cache',
+        }).then((r) => (r.ok ? (r.json() as Promise<Repo>) : null))
+      )
     )
-    if (!res.ok) return []
-    const all: Repo[] = await res.json()
-    return all.sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6)
+    return results.filter(Boolean) as Repo[]
   } catch {
     return []
   }
