@@ -112,45 +112,8 @@ export default async function GitHubActivity() {
           ))}
         </div>
 
-        {/* Stats cards */}
-        <div className="mt-10 grid sm:grid-cols-2 gap-4">
-          <div className="p-5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://github-readme-stats.vercel.app/api?username=SurajFc&show_icons=true&hide_border=true&bg_color=00000000&title_color=6366f1&icon_color=6366f1&text_color=94a3b8&rank_icon=github"
-              alt="GitHub stats for SurajFc"
-              className="w-full"
-            />
-          </div>
-          <div className="p-5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://github-readme-stats.vercel.app/api/top-langs/?username=SurajFc&layout=compact&hide_border=true&bg_color=00000000&title_color=6366f1&text_color=94a3b8&langs_count=8"
-              alt="Top languages for SurajFc"
-              className="w-full"
-            />
-          </div>
-        </div>
-
-        {/* Trophies */}
-        <div className="mt-10 p-5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden">
-          <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">Achievements</p>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://github-profile-trophy.vercel.app/?username=SurajFc&theme=onedark&no-bg=true&no-frame=true&row=1&column=6&margin-w=8"
-            alt="GitHub trophies for SurajFc"
-            className="w-full hidden dark:block"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://github-profile-trophy.vercel.app/?username=SurajFc&theme=flat&no-bg=true&no-frame=true&row=1&column=6&margin-w=8"
-            alt="GitHub trophies for SurajFc"
-            className="w-full dark:hidden"
-          />
-        </div>
-
         {/* Contribution graph */}
-        <div className="mt-4 p-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden">
+        <div className="mt-10 p-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden">
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-3 font-medium">Contribution Activity</p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
