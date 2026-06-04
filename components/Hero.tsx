@@ -18,8 +18,6 @@ export default function Hero() {
     )
   }, [])
 
-  const name = 'Suraj Thapa'
-
   return (
     <section
       id="home"
@@ -50,15 +48,24 @@ export default function Hero() {
 
         <h1
           ref={nameRef}
-          aria-label={name}
+          aria-label="Suraj Thapa"
           className="text-6xl md:text-8xl lg:text-9xl font-bold mb-4 overflow-hidden leading-none"
         >
-          {name.split('').map((char, i) => (
+          {'Suraj'.split('').map((char, i) => (
             <span
-              key={i}
+              key={`s-${i}`}
               className="char inline-block bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent"
             >
-              {char === ' ' ? ' ' : char}
+              {char}
+            </span>
+          ))}
+          <span className="char inline-block">&nbsp;</span>
+          {'Thapa'.split('').map((char, i) => (
+            <span
+              key={`t-${i}`}
+              className="char inline-block bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+            >
+              {char}
             </span>
           ))}
         </h1>
