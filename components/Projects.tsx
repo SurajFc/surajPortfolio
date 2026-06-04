@@ -7,6 +7,17 @@ import SectionHeading from './SectionHeading'
 
 const projects = [
   {
+    title: 'WellPro',
+    image: '/images/wellpro.svg',
+    tech: ['ReactJS', 'TypeScript', 'AI / LLM', 'NLP', 'HIPAA SaaS'],
+    description:
+      'An AI-native Intelligent Health Record (IHR) platform for personalized medicine practitioners. Integrates data from EMRs, labs, and wearables, using clinical LLMs and NLP to summarize patient history, analyze biomarkers, and guide tailored, data-driven wellness protocols.',
+    link: 'https://wellpro.ai/',
+    glow: 'group-hover:shadow-orange-500/20',
+    border: 'hover:border-orange-500/40',
+    badge: 'bg-orange-500/10 text-orange-300 border-orange-500/20',
+  },
+  {
     title: 'PeriopMD',
     image: '/images/PeriopMD.png',
     tech: ['ReactJS', 'Redux', 'MaterialUI', 'Stripe'],
@@ -38,17 +49,6 @@ const projects = [
     glow: 'group-hover:shadow-emerald-500/20',
     border: 'hover:border-emerald-500/40',
     badge: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
-  },
-  {
-    title: 'WellPro',
-    image: '/images/wellpro.svg',
-    tech: ['ReactJS', 'TypeScript', 'AI / LLM', 'NLP', 'HIPAA SaaS'],
-    description:
-      'An AI-native Intelligent Health Record (IHR) platform for personalized medicine practitioners. Integrates data from EMRs, labs, and wearables, using clinical LLMs and NLP to summarize patient history, analyze biomarkers, and guide tailored, data-driven wellness protocols.',
-    link: 'https://wellpro.ai/',
-    glow: 'group-hover:shadow-orange-500/20',
-    border: 'hover:border-orange-500/40',
-    badge: 'bg-orange-500/10 text-orange-300 border-orange-500/20',
   },
 ]
 
