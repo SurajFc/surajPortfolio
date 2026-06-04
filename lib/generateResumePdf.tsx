@@ -115,6 +115,7 @@ export function ResumeDocument() {
   const contacts = [
     { label: d.contact.email,         href: `mailto:${d.contact.email}` },
     { label: d.contact.phone,         href: `tel:${d.contact.phone.replace(/\s+/g, '')}` },
+    { label: d.contact.portfolio,     href: `https://${d.contact.portfolio}` },
     { label: d.contact.github,        href: `https://${d.contact.github}` },
     { label: d.contact.linkedin,      href: `https://${d.contact.linkedin}` },
     { label: d.contact.stackoverflow, href: `https://${d.contact.stackoverflow}` },
@@ -151,7 +152,7 @@ export function ResumeDocument() {
               {d.skills.map((g) => (
                 <View key={g.category} style={s.skillBlock}>
                   <Text style={s.skillCat}>{g.category}</Text>
-                  <Text style={s.skillItems}>{g.items}</Text>
+                  <Text style={s.skillItems}>{g.pdfItems ?? g.items}</Text>
                 </View>
               ))}
             </Section>

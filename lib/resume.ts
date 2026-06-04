@@ -10,6 +10,7 @@ export const resumeData = {
     github: 'github.com/SurajFc',
     linkedin: 'linkedin.com/in/suraj4',
     stackoverflow: 'stackoverflow.com/users/12359814/surajfc',
+    portfolio: 'surajfc.github.io/surajPortfolio',
   },
   summary:
     'Versatile software engineer with 5+ years of industry experience, having successfully delivered complex technical projects across front-end and back-end development. A collaborative team member and effective problem solver seeking to contribute to a challenging environment.',
@@ -81,12 +82,12 @@ export const resumeData = {
     },
   ],
   skills: [
-    { category: 'Frontend', items: 'JavaScript, TypeScript, React, Vue.js, Next.js, HTML, CSS, Redux, Tailwind CSS, React Query' },
-    { category: 'Backend', items: 'Python, Django, Django REST Framework, NestJS, Node.js, GraphQL, WebSockets, Celery, JWT' },
-    { category: 'Mobile', items: 'React Native, Flutter, Dart' },
-    { category: 'Databases', items: 'PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch' },
-    { category: 'AI & ML', items: 'LLM Integration, NLP, Sentiment Analysis, OpenAI API, SMART on FHIR, FHIR R4' },
-    { category: 'Tools & DevOps', items: 'AWS, Firebase, Docker, Git/GitHub, Turborepo, Stripe, Twilio, Web3, Jenkins, Figma, Postman' },
+    { category: 'Frontend',       items: 'JavaScript, TypeScript, React, Vue.js, Next.js, HTML, CSS, Redux, Tailwind CSS, React Query',       pdfItems: 'JS, TS, React, Vue.js, Next.js, HTML/CSS, Redux, Tailwind, React Query' },
+    { category: 'Backend',        items: 'Python, Django, Django REST Framework, NestJS, Node.js, GraphQL, WebSockets, Celery, JWT',           pdfItems: 'Python, Django, DRF, NestJS, Node.js, GraphQL, WebSockets, JWT' },
+    { category: 'Mobile',         items: 'React Native, Flutter, Dart' },
+    { category: 'Databases',      items: 'PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch' },
+    { category: 'AI & ML',        items: 'LLM Integration, NLP, Sentiment Analysis, OpenAI API, SMART on FHIR, FHIR R4',                     pdfItems: 'LLM Integration, NLP, Sentiment Analysis, OpenAI API, FHIR R4' },
+    { category: 'Tools & DevOps', items: 'AWS, Firebase, Docker, Git/GitHub, Turborepo, Stripe, Twilio, Web3, Jenkins, Figma, Postman',       pdfItems: 'AWS, Firebase, Docker, Git/GitHub, Stripe, Twilio, Figma, Jira' },
   ],
   certifications: [
     'Red Hat Certified System Administrator (RHCSA) — Red Hat, August 2018 (ID: 180-177-776)',
