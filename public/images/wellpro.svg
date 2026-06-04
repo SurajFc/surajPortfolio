@@ -1,0 +1,60 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WellPro — AI-native Intelligent Health Record">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#050816"/>
+      <stop offset="0.55" stop-color="#0c0f2b"/>
+      <stop offset="1" stop-color="#1d1836"/>
+    </linearGradient>
+    <linearGradient id="word" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a5b4fc"/>
+      <stop offset="0.5" stop-color="#c4b5fd"/>
+      <stop offset="1" stop-color="#5eead4"/>
+    </linearGradient>
+    <linearGradient id="pulse" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0"/>
+      <stop offset="0.35" stop-color="#818cf8"/>
+      <stop offset="0.6" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="orb1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#6366f1" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <circle cx="220" cy="150" r="320" fill="url(#orb1)"/>
+  <circle cx="1010" cy="500" r="300" fill="url(#orb2)"/>
+
+  <!-- ECG / heartbeat pulse line -->
+  <polyline
+    points="0,330 260,330 320,330 360,250 400,420 440,180 480,330 720,330 760,330 800,290 840,330 1200,330"
+    fill="none" stroke="url(#pulse)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Wordmark -->
+  <text x="600" y="300" text-anchor="middle"
+    font-family="'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif"
+    font-size="120" font-weight="800" fill="url(#word)" letter-spacing="-3">WellPro</text>
+
+  <!-- .ai chip -->
+  <g>
+    <rect x="548" y="345" width="104" height="44" rx="22" fill="#6366f1" fill-opacity="0.14" stroke="#818cf8" stroke-opacity="0.4"/>
+    <text x="600" y="375" text-anchor="middle"
+      font-family="'JetBrains Mono', 'Courier New', monospace"
+      font-size="24" font-weight="600" fill="#a5b4fc">.ai</text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="600" y="445" text-anchor="middle"
+    font-family="'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif"
+    font-size="30" font-weight="500" fill="#94a3b8" letter-spacing="0.5">AI-Native Intelligent Health Record</text>
+</svg>

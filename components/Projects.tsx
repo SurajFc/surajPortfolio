@@ -41,7 +41,7 @@ const projects = [
   },
   {
     title: 'WellPro',
-    image: '/images/project.jpg',
+    image: '/images/wellpro.svg',
     tech: ['ReactJS', 'TypeScript', 'AI / LLM', 'NLP', 'HIPAA SaaS'],
     description:
       'An AI-native Intelligent Health Record (IHR) platform for personalized medicine practitioners. Integrates data from EMRs, labs, and wearables, using clinical LLMs and NLP to summarize patient history, analyze biomarkers, and guide tailored, data-driven wellness protocols.',
