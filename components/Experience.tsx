@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import SectionHeading from './SectionHeading'
+import { useTilt } from '@/lib/useTilt'
 
 const experiences = [
   {
@@ -43,6 +44,7 @@ const experiences = [
 function ExperienceItem({ exp, index }: { exp: (typeof experiences)[0]; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const tilt = useTilt(5)
 
   return (
     <motion.div
@@ -55,7 +57,7 @@ function ExperienceItem({ exp, index }: { exp: (typeof experiences)[0]; index: n
       <div className="absolute left-0 top-3 bottom-0 w-px bg-gradient-to-b from-black/10 dark:from-white/10 to-transparent" />
       <div className={`absolute left-0 top-2.5 -translate-x-[5px] w-2.5 h-2.5 rounded-full ${exp.dot} shadow-lg`} />
 
-      <div className="p-6 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-300">
+      <motion.div {...tilt} className="p-6 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-colors duration-300">
         <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div>
             <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{exp.company}</h3>
@@ -75,7 +77,7 @@ function ExperienceItem({ exp, index }: { exp: (typeof experiences)[0]; index: n
             </li>
           ))}
         </ul>
-      </div>
+      </motion.div>
     </motion.div>
   )
 }

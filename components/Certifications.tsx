@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import SectionHeading from './SectionHeading'
+import { useTilt } from '@/lib/useTilt'
 
 const certifications = [
   {
@@ -17,6 +18,27 @@ const certifications = [
   { name: 'Django REST Framework — Building RESTful APIs', issuer: 'Udemy', meta: '', icon: '🔗' },
   { name: 'Node.js: The Complete Guide (NestJS, GraphQL, Deno)', issuer: 'Udemy', meta: '', icon: '🟢' },
 ]
+
+function CertCard({ cert, index, isInView }: { cert: (typeof certifications)[0]; index: number; isInView: boolean }) {
+  const tilt = useTilt(5)
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -30 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      {...tilt}
+      className="flex items-center gap-4 p-5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-indigo-500/30 transition-colors duration-300"
+    >
+      <span className="text-3xl">{cert.icon}</span>
+      <div>
+        <p className="text-slate-900 dark:text-white font-medium">{cert.name}</p>
+        <p className="text-slate-500 text-sm mt-0.5">
+          {cert.issuer}{cert.meta && ` · ${cert.meta}`}
+        </p>
+      </div>
+    </motion.div>
+  )
+}
 
 export default function Certifications() {
   const ref = useRef(null)
@@ -36,21 +58,7 @@ export default function Certifications() {
 
         <div className="space-y-4">
           {certifications.map((cert, i) => (
-            <motion.div
-              key={cert.name}
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex items-center gap-4 p-5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-300"
-            >
-              <span className="text-3xl">{cert.icon}</span>
-              <div>
-                <p className="text-slate-900 dark:text-white font-medium">{cert.name}</p>
-                <p className="text-slate-500 text-sm mt-0.5">
-                  {cert.issuer}{cert.meta && ` · ${cert.meta}`}
-                </p>
-              </div>
-            </motion.div>
+            <CertCard key={cert.name} cert={cert} index={i} isInView={isInView} />
           ))}
         </div>
       </div>
