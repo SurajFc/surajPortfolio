@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import SectionHeading from './SectionHeading'
+import { imgSrc } from '@/lib/imgSrc'
 
 const projects = [
   {
@@ -68,7 +69,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       <div className="relative h-52 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 group-hover:opacity-60 transition-opacity duration-300" />
         <Image
-          src={project.image}
+          src={imgSrc(project.image)}
           alt={project.title}
           fill
           className="object-cover group-hover:scale-110 transition-transform duration-700"
