@@ -48,6 +48,11 @@ export default function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     if (!nameRef.current) return
     const chars = nameRef.current.querySelectorAll('.char')
     gsap.fromTo(
