@@ -11,8 +11,11 @@ const certifications = [
     meta: 'August 2018 · Certificate ID: 180-177-776',
     icon: '🏅',
   },
-  { name: 'Python Bootcamp', issuer: 'Udemy', meta: '', icon: '🐍' },
-  { name: 'Complete React Developer', issuer: 'Udemy', meta: '', icon: '⚛️' },
+  { name: 'The Complete Python Bootcamp', issuer: 'Udemy', meta: '', icon: '🐍' },
+  { name: 'Complete React Developer in 2024', issuer: 'Udemy', meta: '', icon: '⚛️' },
+  { name: 'The Complete Flutter & Dart Development Bootcamp', issuer: 'Udemy', meta: '', icon: '📱' },
+  { name: 'Django REST Framework — Building RESTful APIs', issuer: 'Udemy', meta: '', icon: '🔗' },
+  { name: 'Node.js: The Complete Guide (NestJS, GraphQL, Deno)', issuer: 'Udemy', meta: '', icon: '🟢' },
 ]
 
 export default function Certifications() {

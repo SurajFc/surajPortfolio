@@ -9,25 +9,37 @@ const skillCategories = [
     name: 'Frontend',
     dot: 'bg-blue-400',
     badge: 'bg-blue-500/10 text-blue-600 dark:text-blue-300 border-blue-500/20',
-    skills: ['JavaScript', 'TypeScript', 'React', 'React Native', 'Vue.js', 'HTML', 'CSS', 'Redux'],
+    skills: ['JavaScript', 'TypeScript', 'React', 'Vue.js', 'Next.js', 'HTML', 'CSS', 'Redux', 'Tailwind CSS', 'React Query'],
   },
   {
     name: 'Backend',
     dot: 'bg-purple-400',
     badge: 'bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-500/20',
-    skills: ['Python', 'Django', 'NestJS', 'Node.js', 'GraphQL'],
+    skills: ['Python', 'Django', 'Django REST Framework', 'NestJS', 'Node.js', 'GraphQL', 'WebSockets', 'Celery', 'JWT'],
+  },
+  {
+    name: 'Mobile',
+    dot: 'bg-pink-400',
+    badge: 'bg-pink-500/10 text-pink-600 dark:text-pink-300 border-pink-500/20',
+    skills: ['React Native', 'Flutter', 'Dart'],
   },
   {
     name: 'Databases',
     dot: 'bg-emerald-400',
     badge: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/20',
-    skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Elasticsearch'],
   },
   {
-    name: 'Tools & Platforms',
+    name: 'AI & ML',
+    dot: 'bg-violet-400',
+    badge: 'bg-violet-500/10 text-violet-600 dark:text-violet-300 border-violet-500/20',
+    skills: ['LLM Integration', 'NLP', 'Sentiment Analysis', 'OpenAI API', 'SMART on FHIR', 'FHIR R4'],
+  },
+  {
+    name: 'Tools & DevOps',
     dot: 'bg-orange-400',
     badge: 'bg-orange-500/10 text-orange-600 dark:text-orange-300 border-orange-500/20',
-    skills: ['AWS', 'Git/GitHub', 'Figma', 'Jira', 'Postman', 'Confluence', 'Stripe', 'Twilio'],
+    skills: ['AWS', 'Firebase', 'Docker', 'Git/GitHub', 'Turborepo', 'Figma', 'Stripe', 'Twilio', 'Web3', 'Jenkins', 'Postman', 'Jira'],
   },
 ]
 

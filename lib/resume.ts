@@ -81,15 +81,20 @@ export const resumeData = {
     },
   ],
   skills: [
-    { category: 'Frontend', items: 'JavaScript, TypeScript, React, React Native, Vue.js, HTML, CSS, Redux' },
-    { category: 'Backend', items: 'Python, Django, NestJS, Node.js, GraphQL' },
-    { category: 'Databases', items: 'PostgreSQL, MySQL, MongoDB' },
-    { category: 'Tools & Platforms', items: 'AWS, Git/GitHub, Figma, Jira, Postman, Confluence, Stripe, Twilio' },
+    { category: 'Frontend', items: 'JavaScript, TypeScript, React, Vue.js, Next.js, HTML, CSS, Redux, Tailwind CSS, React Query' },
+    { category: 'Backend', items: 'Python, Django, Django REST Framework, NestJS, Node.js, GraphQL, WebSockets, Celery, JWT' },
+    { category: 'Mobile', items: 'React Native, Flutter, Dart' },
+    { category: 'Databases', items: 'PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch' },
+    { category: 'AI & ML', items: 'LLM Integration, NLP, Sentiment Analysis, OpenAI API, SMART on FHIR, FHIR R4' },
+    { category: 'Tools & DevOps', items: 'AWS, Firebase, Docker, Git/GitHub, Turborepo, Stripe, Twilio, Web3, Jenkins, Figma, Postman' },
   ],
   certifications: [
     'Red Hat Certified System Administrator (RHCSA) — Red Hat, August 2018 (ID: 180-177-776)',
-    'Python Bootcamp — Udemy',
-    'Complete React Developer — Udemy',
+    'The Complete Python Bootcamp — Udemy',
+    'Complete React Developer in 2024 — Udemy',
+    'The Complete Flutter & Dart Development Bootcamp — Udemy',
+    'Django REST Framework — Building RESTful APIs — Udemy',
+    'Node.js: The Complete Guide (NestJS, GraphQL, Deno) — Udemy',
   ],
 }
 
