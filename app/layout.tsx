@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+import { Analytics } from '@vercel/analytics/next'
 import ScrollProgress from '@/components/ScrollProgress'
 import BackToTop from '@/components/BackToTop'
 import CursorSpotlight from '@/components/CursorSpotlight'
@@ -139,6 +140,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CursorSpotlight />
           {children}
           <BackToTop />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
