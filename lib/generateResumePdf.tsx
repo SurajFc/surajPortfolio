@@ -115,6 +115,7 @@ export function ResumeDocument() {
   const contacts = [
     { label: d.contact.email,         href: `mailto:${d.contact.email}` },
     { label: d.contact.phone,         href: `tel:${d.contact.phone.replace(/\s+/g, '')}` },
+    { label: d.contact.portfolio,     href: `https://${d.contact.portfolio}` },
     { label: d.contact.github,        href: `https://${d.contact.github}` },
     { label: d.contact.linkedin,      href: `https://${d.contact.linkedin}` },
     { label: d.contact.stackoverflow, href: `https://${d.contact.stackoverflow}` },
