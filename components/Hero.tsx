@@ -52,11 +52,23 @@ export default function Hero() {
     if (window.location.hash) {
       history.replaceState(null, document.title, window.location.pathname)
     }
-    // rAF ensures this runs after any browser scroll restoration attempt
-    const raf = requestAnimationFrame(() => {
+    // Force top repeatedly during the initial load window — beats browser
+    // scroll restoration and any late layout shifts that nudge the page down.
+    let count = 0
+    window.scrollTo(0, 0)
+    const id = setInterval(() => {
       window.scrollTo(0, 0)
-    })
-    return () => cancelAnimationFrame(raf)
+      if (++count > 12) clearInterval(id) // ~12 frames over ~600ms
+    }, 50)
+    const stop = () => clearInterval(id)
+    // Let the user take over the moment they intentionally scroll/touch
+    window.addEventListener('wheel', stop, { once: true, passive: true })
+    window.addEventListener('touchmove', stop, { once: true, passive: true })
+    return () => {
+      clearInterval(id)
+      window.removeEventListener('wheel', stop)
+      window.removeEventListener('touchmove', stop)
+    }
   }, [])
 
   useEffect(() => {
