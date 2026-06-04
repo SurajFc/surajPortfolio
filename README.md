@@ -1,123 +1,101 @@
-# Suraj Thapa  
-## Senior Software Engineer  
+# Suraj Thapa — Portfolio
 
-- **Email:** surajthapafc@gmail.com  
-- **Phone:** +91 9818479189 , +977 9811064680
-- **GitHub:** [SurajFc](https://github.com/SurajFc)  
+A modern, animated personal portfolio built as a **statically-exported Next.js** site. Dark theme, glassmorphism UI, scroll-triggered motion, and a GSAP-animated hero.
 
----
-
-### About Me  
-I am a versatile software engineer with 5 years of industry experience, delivering complex technical solutions across both front-end and back-end technologies. Known for being a collaborative team player and a strategic problem solver, I’m seeking an opportunity to contribute to a dynamic organization where I can apply my expertise, drive impactful results, and continue to grow professionally.
+🔗 **Live:** [surajfc.github.io/surajPortfolio](https://surajfc.github.io/surajPortfolio/)
 
 ---
 
-### Technologies  
-- **Frontend:** Javascript, ReactJS, Redux, Typescript, HTML/CSS etc
-- **Backend:** Python, Django, NestJs, PostgreSQL, MySQL etc  
-- **Other:** Linux, GraphQL, Stripe, AWS etc
+## Tech Stack
+
+| Layer        | Technology                                  |
+| ------------ | ------------------------------------------- |
+| Framework    | [Next.js 14](https://nextjs.org/) (App Router, static export) |
+| Language     | TypeScript                                  |
+| Styling      | [Tailwind CSS](https://tailwindcss.com/)    |
+| Animation    | [Framer Motion](https://www.framer.com/motion/) (UI & scroll) + [GSAP](https://gsap.com/) (hero) |
+| Icons        | [react-icons](https://react-icons.github.io/react-icons/) |
+| Forms        | [Formspree](https://formspree.io/)          |
 
 ---
 
-### Experience  
+## Features
 
-#### **Mindbrowser Inc - Software Engineer (Remote)**  
-**April 2021 - Present**  
-- Designed and developed a large-scale web application, featuring over 200 responsive pages utilizing ReactJS.  
-- Collaborated closely with client R&D teams to refine software designs and deliver innovative solutions.  
-- Facilitated the integration of multiple third-party and backend APIs by coordinating with the backend team.  
-- Led project development to ensure smooth and timely deliveries.  
-- Mentored junior developers and fresh graduates, and conducted code reviews for team members.  
-
-#### **Macco Robotics - Vue.Js Intern (Remote)**  
-**July 2020 - October 2020**  
-- Coordinated with the backend team to integrate multiple third-party and backend APIs, ensuring seamless data flow and functionality.  
-- Converted UI designs into Vue.js components utilizing Vuetify for enhanced styling and functionality.  
-
-#### **Agile Computers - Python Trainee**  
-**January 2019 - June 2019**  
-- Served as a Python Trainee, focusing on developing applications using Django and other related technologies.  
+- ⚡ **Static export** — zero server, deployable to any static host (GitHub Pages, Netlify, Vercel)
+- 🎬 **GSAP hero animation** — character-by-character reveal of the name
+- 📜 **Scroll-triggered motion** — Framer Motion fade/slide-in on every section
+- 🧭 **Smart header** — active-section highlighting + animated mobile menu
+- 🪟 **Glassmorphism cards** with hover effects across Experience, Projects, and Skills
+- 📱 **Fully responsive** dark-themed design with indigo/purple accents
+- 📨 **Working contact form** via Formspree
 
 ---
 
-### Projects  
+## Getting Started
 
-#### **PeriopMD - practitioner.periopmd.org & PeriopMD SuperAdmin**  
-**Techstack:** ReactJS, Redux, MaterialUI, Stripe  
-- A portal where users can register as a hospital or individual practitioner upon purchasing a subscription.  
-- Hospitals can add individual practitioners under their account.  
-- Provides recommendations for tests based on specific conditions and age.  
-- Allows users to create custom tests and conditions.  
+```bash
+# Install dependencies
+npm install
 
-#### **TTA Connect - traconnect.com**  
-**Techstack:** ReactJS, Redux, Javascript  
-- A platform for the world's largest training solutions provider.  
-- Designed the frontend web application using ReactJS and Redux for state management.  
-- Implemented JWT for authentication.  
+# Run the dev server (http://localhost:3000)
+npm run dev
 
-#### **TTA Connect CMS - ttateam.ttacorp.com**  
-**Techstack:** ReactJS, Javascript, Redux, MSAL, Twilio  
-- Created a content management and chat support system for Training Associates.  
-- Developed a real-time chat application using Twilio and Azure for authorization.  
-
-#### **Edunaa, Edunaa Instructor and Superadmin Portal**  
-**Techstack:** ReactJS, Django, AWS, Stripe, Video.js, Redux  
-- An educational marketplace tailored for individuals in East Africa.  
-- Developed responsive web pages with features like video access, course searches, purchases, progress tracking, and social media logins.  
-- Designed and implemented APIs for course retrieval, certificate management, Stripe payment processing, and user management.  
-
-#### **Trabus RippleGo - trabus.com/ripplego**  
-**Techstack:** ReactJS, Redux, GraphQL  
-- Developed a front-end real-time tracking application for river navigation using GraphQL.  
-- Provides route guidance and instant alerts about river conditions, navigation hazards, and bridge clearances.  
+# Build a static export (outputs to ./out)
+npm run build
+```
 
 ---
 
-### Education  
-- **Bhai Parmanand Institute of Business Studies**  
-  - Masters of Computer Application (2017 - 2019)  
-- **Vivekananda Institute of Professional Studies**  
-  - Bachelors of Computer Application (2014 - 2017)  
+## Project Structure
+
+```
+.
+├── app/
+│   ├── layout.tsx          # Root layout, fonts, metadata
+│   ├── page.tsx            # Page composition (section order)
+│   └── globals.css         # Global styles + Tailwind layers
+├── components/
+│   ├── Header.tsx          # Sticky nav with active-section detection
+│   ├── Hero.tsx            # GSAP animated landing section
+│   ├── About.tsx           # Bio + animated stat cards
+│   ├── Experience.tsx      # Timeline of roles
+│   ├── Education.tsx       # Degrees
+│   ├── Projects.tsx        # Project cards (incl. WellPro)
+│   ├── Skills.tsx          # Categorized skill badges
+│   ├── Certifications.tsx  # Certifications list
+│   ├── Contact.tsx         # Formspree contact form
+│   ├── Footer.tsx          # Social links
+│   └── SectionHeading.tsx  # Shared numbered section heading
+├── public/
+│   ├── assets/             # Resume PDF
+│   └── images/             # Project images
+├── next.config.js          # Static export config
+├── tailwind.config.ts
+└── tsconfig.json
+```
 
 ---
 
-### Certifications  
-- Red Hat Certified System Administrator (August 2018) - Certificate id - 180-177-776  
-- Python Bootcamp By Udemy  
-- Complete React Developer By Udemy  
+## Sections
+
+**About · Experience · Education · Projects · Skills · Certifications · Contact**
+
+### Featured Projects
+- **PeriopMD** — medical subscription portal (ReactJS, Redux, MaterialUI, Stripe)
+- **TTA Connect** — training solutions platform with real-time chat (ReactJS, Redux, MSAL, Twilio)
+- **Trabus RippleGo** — real-time river navigation tracking (ReactJS, Redux, GraphQL)
+- **WellPro** — AI-native Intelligent Health Record platform (ReactJS, TypeScript, AI/LLM, NLP)
 
 ---
 
-### Key Skills  
-- Project Management  
-- Agile Development  
-- Problem-solving  
-- Client Communication  
-- API Integrations  
-- API Designing  
-- Software Design  
-- Programming  
+## Deployment
+
+The site is configured for static export (`output: 'export'` in `next.config.js`). Running `npm run build` generates a fully static `out/` directory that can be served by any static host.
 
 ---
 
-### Softwares  
-- Github/Gitlab  
-- Jira  
-- Asana  
-- Trello  
-- Postman  
-- Confluence  
-- Figma  
-- Teams  
+## Contact
 
----
-
-### Languages  
-- Hindi  
-- English  
-- Nepali  
-
----
-
-### Portfolio  
-Visit my portfolio site: [surajPortfolio](https://surajfc.github.io/surajPortfolio/)  
+- **GitHub:** [SurajFc](https://github.com/SurajFc)
+- **LinkedIn:** [suraj4](https://www.linkedin.com/in/suraj4/)
+- **Stack Overflow:** [surajfc](https://stackoverflow.com/users/12359814/surajfc)
