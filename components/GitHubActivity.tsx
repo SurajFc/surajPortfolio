@@ -112,7 +112,25 @@ export default async function GitHubActivity() {
           ))}
         </div>
 
-        <div className="mt-10 p-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden">
+        {/* Trophies */}
+        <div className="mt-10 p-5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 font-medium">Achievements</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://github-profile-trophy.vercel.app/?username=SurajFc&theme=onedark&no-bg=true&no-frame=true&row=1&column=6&margin-w=8"
+            alt="GitHub trophies for SurajFc"
+            className="w-full hidden dark:block"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://github-profile-trophy.vercel.app/?username=SurajFc&theme=flat&no-bg=true&no-frame=true&row=1&column=6&margin-w=8"
+            alt="GitHub trophies for SurajFc"
+            className="w-full dark:hidden"
+          />
+        </div>
+
+        {/* Contribution graph */}
+        <div className="mt-4 p-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden">
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-3 font-medium">Contribution Activity</p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
