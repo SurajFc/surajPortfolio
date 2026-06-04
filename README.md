@@ -2,7 +2,7 @@
 
 A modern, animated personal portfolio built as a **statically-exported Next.js** site. Dark theme, glassmorphism UI, scroll-triggered motion, and a GSAP-animated hero.
 
-🔗 **Live:** [surajfc.github.io/surajPortfolio](https://surajfc.github.io/surajPortfolio/)
+🔗 **Live:** [surajthapa.vercel.app](https://surajthapa.vercel.app/) · [surajfc.github.io/surajPortfolio](https://surajfc.github.io/surajPortfolio/)
 
 ---
 
@@ -91,6 +91,9 @@ npm run build
 ## Deployment
 
 The site is configured for static export (`output: 'export'` in `next.config.js`). Running `npm run build` generates a fully static `out/` directory that can be served by any static host.
+
+- **Vercel:** [surajthapa.vercel.app](https://surajthapa.vercel.app/) — auto-deploys from `master` (`vercel.json` serves the `out/` directory)
+- **GitHub Pages:** [surajfc.github.io/surajPortfolio](https://surajfc.github.io/surajPortfolio/) — deployed via GitHub Actions (`GITHUB_PAGES=true` sets the `/surajPortfolio` base path)
 
 ---
 
