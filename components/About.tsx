@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import SectionHeading from './SectionHeading'
+import DownloadResumeButton from './DownloadResumeButton'
 
 const stats = [
   { label: 'Years Experience', value: '4+' },
@@ -47,13 +48,9 @@ export default function About() {
               professional growth.
             </p>
             <div className="mt-8">
-              <a
-                href="/assets/surajCV.pdf"
-                download="Suraj_Thapa_CV.pdf"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5"
-              >
+              <DownloadResumeButton className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5">
                 Download CV
-              </a>
+              </DownloadResumeButton>
             </div>
           </motion.div>
 

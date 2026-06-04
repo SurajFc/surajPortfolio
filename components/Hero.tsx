@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
+import DownloadResumeButton from './DownloadResumeButton'
 
 export default function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null)
@@ -77,13 +78,9 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 1.1 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <a
-            href="/assets/surajCV.pdf"
-            download="Suraj_Thapa_CV.pdf"
-            className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5"
-          >
+          <DownloadResumeButton className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white rounded-lg font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5">
             Download CV
-          </a>
+          </DownloadResumeButton>
           <a
             href="#projects"
             className="px-8 py-3 border border-indigo-500/40 hover:border-indigo-400 text-slate-300 hover:text-white rounded-lg font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500/10"
