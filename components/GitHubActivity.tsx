@@ -17,7 +17,7 @@ interface Repo {
 const PINNED_REPOS = [
   'surajPortfolio',
   'smart-on-fhir-app',
-  'balajee-erp',
+  'Django-DRF-Boilerplate-with-otp-verification',
   'react-fhir-forms',
   'NestJsAuth',
   'Django-JWT-boilerplate',
