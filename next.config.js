@@ -1,17 +1,17 @@
 const isProd = process.env.NODE_ENV === 'production'
 const repo = 'surajPortfolio' // GitHub Pages project path: /surajPortfolio
+const basePath = isProd ? `/${repo}` : ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  // On GitHub Pages the site is served from /<repo>/, so prefix assets/routes
-  // in production. Local dev (npm run dev) keeps the root path.
-  basePath: isProd ? `/${repo}` : '',
-  assetPrefix: isProd ? `/${repo}/` : '',
-  images: {
-    unoptimized: true,
-  },
+  basePath,
+  // assetPrefix (no trailing slash) prefixes _next/static JS/CSS chunks
+  assetPrefix: basePath,
+  // Expose basePath to client code so components can prefix public/ image paths
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
+  images: { unoptimized: true },
 }
 
 module.exports = nextConfig
