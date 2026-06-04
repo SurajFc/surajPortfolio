@@ -6,6 +6,7 @@ import Image from 'next/image'
 import SectionHeading from './SectionHeading'
 import DownloadResumeButton from './DownloadResumeButton'
 import { imgSrc } from '@/lib/imgSrc'
+import { useTilt } from '@/lib/useTilt'
 
 const stats = [
   { label: 'Years Experience', value: '5+', numeric: 5 },
@@ -18,6 +19,7 @@ function AnimatedCounter({ numeric, suffix, label }: { numeric: number; suffix: 
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const [count, setCount] = useState(0)
+  const tilt = useTilt(6)
 
   useEffect(() => {
     if (!isInView) return
@@ -43,7 +45,8 @@ function AnimatedCounter({ numeric, suffix, label }: { numeric: number; suffix: 
       initial={{ opacity: 0, scale: 0.9 }}
       animate={isInView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.4 }}
-      className="p-6 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-indigo-500/40 transition-all duration-300"
+      {...tilt}
+      className="p-6 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-indigo-500/40 transition-colors duration-300"
     >
       <p className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
         {count}{suffix}

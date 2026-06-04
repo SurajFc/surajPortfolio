@@ -150,7 +150,7 @@ export default function Terminal() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.4 }}
-      className="w-full max-w-2xl mx-auto mt-10"
+      className="hidden sm:block w-full max-w-2xl mx-auto mt-10"
       onClick={() => inputRef.current?.focus()}
     >
       {/* Title bar */}
