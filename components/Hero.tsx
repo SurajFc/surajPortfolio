@@ -48,8 +48,15 @@ export default function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
-    window.history.scrollRestoration = 'manual'
-    window.scrollTo(0, 0)
+    // Strip hash from URL (hash-based scroll ignores scrollRestoration)
+    if (window.location.hash) {
+      history.replaceState(null, document.title, window.location.pathname)
+    }
+    // rAF ensures this runs after any browser scroll restoration attempt
+    const raf = requestAnimationFrame(() => {
+      window.scrollTo(0, 0)
+    })
+    return () => cancelAnimationFrame(raf)
   }, [])
 
   useEffect(() => {
