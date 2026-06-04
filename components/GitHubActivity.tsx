@@ -24,15 +24,15 @@ const LANG_COLORS: Record<string, string> = {
 async function fetchRepos(): Promise<Repo[]> {
   try {
     const res = await fetch(
-      'https://api.github.com/users/SurajFc/repos?sort=updated&per_page=6&type=owner',
+      'https://api.github.com/users/SurajFc/repos?sort=updated&per_page=50&type=owner',
       {
         headers: { Accept: 'application/vnd.github+json' },
-        // Static export — fetch once at build time
         cache: 'force-cache',
       }
     )
     if (!res.ok) return []
-    return res.json()
+    const all: Repo[] = await res.json()
+    return all.sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6)
   } catch {
     return []
   }
