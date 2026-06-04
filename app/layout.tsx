@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes'
 import ScrollProgress from '@/components/ScrollProgress'
 import BackToTop from '@/components/BackToTop'
 import CursorSpotlight from '@/components/CursorSpotlight'
+import PageLoader from '@/components/PageLoader'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -75,9 +76,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: `${BASE}/images/profile.png`,
-        width: 800,
-        height: 800,
+        url: `${BASE}/images/og-image.png`,
+        width: 1200,
+        height: 630,
         alt: 'Suraj Thapa — Software Engineer',
       },
     ],
@@ -89,7 +90,7 @@ export const metadata: Metadata = {
     description:
       'Software Engineer with 5+ years of full-stack experience in React, TypeScript, Django, NestJS and more.',
     creator: '@surajfc',
-    images: [`${BASE}/images/profile.png`],
+    images: [`${BASE}/images/og-image.png`],
   },
 
   category: 'technology',
@@ -128,6 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <PageLoader />
           <ScrollProgress />
           <CursorSpotlight />
           {children}

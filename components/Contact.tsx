@@ -2,7 +2,10 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { HiCalendar, HiMail } from 'react-icons/hi'
 import SectionHeading from './SectionHeading'
+
+const CALENDLY_URL = 'https://calendly.com/surajthapafc'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
@@ -49,11 +52,35 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-10"
+          className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-7"
         >
           I&apos;m currently open to new opportunities. Whether you have a question or just want
           to say hi — my inbox is always open!
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap gap-3 mb-8"
+        >
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium text-sm transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <HiCalendar className="text-base" />
+            Schedule a Call
+          </a>
+          <a
+            href="mailto:surajthapafc@gmail.com"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-indigo-500/40 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium text-sm transition-all duration-300"
+          >
+            <HiMail className="text-base" />
+            Send an Email
+          </a>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

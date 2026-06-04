@@ -151,7 +151,7 @@ export function ResumeDocument() {
               {d.skills.map((g) => (
                 <View key={g.category} style={s.skillBlock}>
                   <Text style={s.skillCat}>{g.category}</Text>
-                  <Text style={s.skillItems}>{g.items}</Text>
+                  <Text style={s.skillItems}>{g.pdfItems ?? g.items}</Text>
                 </View>
               ))}
             </Section>
