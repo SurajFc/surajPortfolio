@@ -8,25 +8,25 @@ const skillCategories = [
   {
     name: 'Frontend',
     dot: 'bg-blue-400',
-    badge: 'bg-blue-500/10 text-blue-300 border-blue-500/20',
+    badge: 'bg-blue-500/10 text-blue-600 dark:text-blue-300 border-blue-500/20',
     skills: ['JavaScript', 'TypeScript', 'React', 'React Native', 'Vue.js', 'HTML', 'CSS', 'Redux'],
   },
   {
     name: 'Backend',
     dot: 'bg-purple-400',
-    badge: 'bg-purple-500/10 text-purple-300 border-purple-500/20',
+    badge: 'bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-500/20',
     skills: ['Python', 'Django', 'NestJS', 'Node.js', 'GraphQL'],
   },
   {
     name: 'Databases',
     dot: 'bg-emerald-400',
-    badge: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
+    badge: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/20',
     skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
   },
   {
     name: 'Tools & Platforms',
     dot: 'bg-orange-400',
-    badge: 'bg-orange-500/10 text-orange-300 border-orange-500/20',
+    badge: 'bg-orange-500/10 text-orange-600 dark:text-orange-300 border-orange-500/20',
     skills: ['AWS', 'Git/GitHub', 'Figma', 'Jira', 'Postman', 'Confluence', 'Stripe', 'Twilio'],
   },
 ]
@@ -54,11 +54,11 @@ export default function Skills() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: catIndex * 0.1 }}
-              className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300"
+              className="p-6 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-300"
             >
               <div className="flex items-center gap-2 mb-4">
                 <div className={`w-2.5 h-2.5 rounded-full ${cat.dot}`} />
-                <h3 className="text-white font-semibold">{cat.name}</h3>
+                <h3 className="text-slate-900 dark:text-white font-semibold">{cat.name}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill, i) => (

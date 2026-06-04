@@ -40,15 +40,15 @@ export default function Education() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-indigo-500/30 hover:bg-white/[0.07] transition-all duration-300 group"
+              className="p-6 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-300 group"
             >
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                   🎓
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold leading-snug">{edu.school}</h3>
-                  <p className="text-indigo-400 text-sm font-medium mt-1.5">{edu.degree}</p>
+                  <h3 className="text-slate-900 dark:text-white font-semibold leading-snug">{edu.school}</h3>
+                  <p className="text-indigo-500 dark:text-indigo-400 text-sm font-medium mt-1.5">{edu.degree}</p>
                   <p className="text-slate-500 text-xs font-mono mt-2">{edu.date}</p>
                 </div>
               </div>

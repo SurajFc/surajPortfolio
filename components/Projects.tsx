@@ -64,7 +64,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: (index % 2) * 0.15 }}
       whileHover={{ y: -6 }}
-      className={`group rounded-2xl overflow-hidden bg-white/5 border border-white/10 ${project.border} transition-all duration-300 shadow-xl ${project.glow}`}
+      className={`group rounded-2xl overflow-hidden bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 ${project.border} transition-all duration-300 shadow-xl ${project.glow}`}
     >
       <div className="relative h-52 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 group-hover:opacity-60 transition-opacity duration-300" />
@@ -78,8 +78,8 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       </div>
 
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-        <p className="text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
+        <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">{project.title}</h3>
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-5">
           {project.tech.map((t) => (
             <span
