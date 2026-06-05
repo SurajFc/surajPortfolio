@@ -48,10 +48,10 @@ function AnimatedCounter({ numeric, suffix, label }: { numeric: number; suffix: 
       {...tilt}
       className="p-6 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-indigo-500/40 transition-colors duration-300"
     >
-      <p className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+      <p className="text-5xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent tabular-nums">
         {count}{suffix}
       </p>
-      <p className="text-slate-500 text-sm mt-1">{label}</p>
+      <p className="text-slate-500 dark:text-slate-400 text-sm mt-2 font-medium">{label}</p>
     </motion.div>
   )
 }

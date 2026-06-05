@@ -7,6 +7,9 @@ import BackToTop from '@/components/BackToTop'
 import CursorSpotlight from '@/components/CursorSpotlight'
 import PageLoader from '@/components/PageLoader'
 import ParticleBackground from '@/components/ParticleBackground'
+import GradientMesh from '@/components/GradientMesh'
+import GrainOverlay from '@/components/GrainOverlay'
+import SocialSidebar from '@/components/SocialSidebar'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -134,10 +137,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <GradientMesh />
+          <GrainOverlay />
           <ParticleBackground />
           <PageLoader />
           <ScrollProgress />
           <CursorSpotlight />
+          <SocialSidebar />
           {children}
           <BackToTop />
           <Analytics />

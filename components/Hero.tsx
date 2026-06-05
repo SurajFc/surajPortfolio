@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import DownloadResumeButton from './DownloadResumeButton'
 import Terminal from './Terminal'
+import { useMagnetic } from '@/lib/useMagnetic'
 
 const ROLES = [
   'Software Engineer',
@@ -41,6 +42,15 @@ function Typewriter() {
       {displayed}
       <span className="inline-block w-0.5 h-6 md:h-8 bg-indigo-400 ml-0.5 align-middle animate-pulse" />
     </span>
+  )
+}
+
+function MagneticButton({ children }: { children: React.ReactNode }) {
+  const mag = useMagnetic(0.35)
+  return (
+    <motion.div style={mag.style} onMouseMove={mag.onMouseMove} onMouseLeave={mag.onMouseLeave}>
+      {children}
+    </motion.div>
   )
 }
 
@@ -147,15 +157,19 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 1.1 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <DownloadResumeButton className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white rounded-lg font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5">
-              Download CV
-            </DownloadResumeButton>
-            <a
-              href="#projects"
-              className="px-8 py-3 border border-indigo-500/60 dark:border-indigo-500/40 hover:border-indigo-400 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white rounded-lg font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-500/10"
-            >
-              View Projects
-            </a>
+            <MagneticButton>
+              <DownloadResumeButton className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white rounded-lg font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30">
+                Download CV
+              </DownloadResumeButton>
+            </MagneticButton>
+            <MagneticButton>
+              <a
+                href="#projects"
+                className="block px-8 py-3 border border-indigo-500/60 dark:border-indigo-500/40 hover:border-indigo-400 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white rounded-lg font-medium transition-all duration-300 hover:bg-indigo-500/10"
+              >
+                View Projects
+              </a>
+            </MagneticButton>
           </motion.div>
         </div>
 
