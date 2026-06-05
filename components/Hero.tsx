@@ -48,7 +48,7 @@ function Typewriter() {
 function MagneticButton({ children }: { children: React.ReactNode }) {
   const mag = useMagnetic(0.35)
   return (
-    <motion.div style={mag.style} onMouseMove={mag.onMouseMove} onMouseLeave={mag.onMouseLeave}>
+    <motion.div style={mag.style} onMouseMove={mag.onMouseMove} onMouseLeave={mag.onMouseLeave} className="w-full sm:w-auto">
       {children}
     </motion.div>
   )
@@ -85,7 +85,7 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
     >
       {/* Gradient orbs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'clip' }}>
         <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] animate-pulse-slow" />
         <div
           className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse-slow"
@@ -158,14 +158,14 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <MagneticButton>
-              <DownloadResumeButton className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white rounded-lg font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30">
+              <DownloadResumeButton className="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-70 disabled:cursor-wait text-white rounded-lg font-medium transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30">
                 Download CV
               </DownloadResumeButton>
             </MagneticButton>
             <MagneticButton>
               <a
                 href="#projects"
-                className="block px-8 py-3 border border-indigo-500/60 dark:border-indigo-500/40 hover:border-indigo-400 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white rounded-lg font-medium transition-all duration-300 hover:bg-indigo-500/10"
+                className="block w-full sm:w-auto text-center px-8 py-3 border border-indigo-500/60 dark:border-indigo-500/40 hover:border-indigo-400 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white rounded-lg font-medium transition-all duration-300 hover:bg-indigo-500/10"
               >
                 View Projects
               </a>
