@@ -100,6 +100,10 @@ export const metadata: Metadata = {
   },
 
   category: 'technology',
+
+  verification: {
+    google: '7bi6x19w37NjyW5rILmQ2S3-_ScRxoCal5pHlFfP3Ls',
+  },
 }
 
 // JSON-LD structured data — helps Google understand the page as a Person entity
