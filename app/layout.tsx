@@ -15,10 +15,10 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
-const SITE_URL = 'https://surajfc.github.io/surajPortfolio'
+const SITE_URL = 'https://surajthapa.vercel.app'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://surajfc.github.io'),
+  metadataBase: new URL('https://surajthapa.vercel.app'),
 
   title: {
     default: 'Suraj Thapa | Software Engineer',
@@ -115,6 +115,7 @@ const jsonLd = {
     'https://github.com/SurajFc',
     'https://www.linkedin.com/in/suraj4/',
     'https://stackoverflow.com/users/12359814/surajfc',
+    'https://surajfc.github.io/surajPortfolio',
   ],
   knowsAbout: [
     'JavaScript', 'TypeScript', 'React', 'React Native',
