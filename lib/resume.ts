@@ -10,7 +10,7 @@ export const resumeData = {
     github: 'github.com/SurajFc',
     linkedin: 'linkedin.com/in/suraj4',
     stackoverflow: 'stackoverflow.com/users/12359814/surajfc',
-    portfolio: 'surajfc.github.io/surajPortfolio',
+    portfolio: 'surajthapa.vercel.app',
   },
   summary:
     'Versatile software engineer with 5+ years of industry experience, having successfully delivered complex technical projects across front-end and back-end development. A collaborative team member and effective problem solver seeking to contribute to a challenging environment.',

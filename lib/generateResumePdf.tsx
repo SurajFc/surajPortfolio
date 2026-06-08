@@ -86,6 +86,7 @@ const s = StyleSheet.create({
   projectName:  { fontSize: 9.2, fontFamily: 'Helvetica-Bold', color: HEADING },
   projectTech:  { fontSize: 7.8, color: ACCENT, marginTop: 1, fontFamily: 'Helvetica-Oblique' },
   projectDesc:  { color: BODY, marginTop: 1.5, fontSize: 8.5 },
+  seeMore:      { fontSize: 8, color: ACCENT, marginTop: 4, fontFamily: 'Helvetica-Oblique' },
 
   /* ── Sidebar items ───────────────────────────────────── */
   skillBlock:   { marginBottom: 4 },
@@ -212,6 +213,9 @@ export function ResumeDocument() {
                   </View>
                 ))}
               </View>
+              <Link src="https://surajthapa.vercel.app/#projects" style={s.seeMore}>
+                See more projects → surajthapa.vercel.app
+              </Link>
             </Section>
           </View>
         </View>
