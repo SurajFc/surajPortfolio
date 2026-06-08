@@ -1,12 +1,23 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { motion, useInView, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import SectionHeading from './SectionHeading'
 import { imgSrc } from '@/lib/imgSrc'
 
-const projects = [
+type Project = {
+  title: string
+  image: string
+  tech: string[]
+  description: string
+  link: string
+  glow: string
+  border: string
+  badge: string
+}
+
+const projects: Project[] = [
   {
     title: 'WellPro',
     image: '/images/wellpro.svg',
@@ -53,7 +64,32 @@ const projects = [
   },
 ]
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+const moreProjects: Project[] = [
+  {
+    title: 'Balajee ERP',
+    image: '/images/balajee.svg',
+    tech: ['React', 'TypeScript', 'Turborepo', 'Tailwind v4', 'shadcn/ui'],
+    description:
+      'Enterprise resource planning system built for Balajee Glass Industries. A Turborepo monorepo with Vite + React + TypeScript powering estimate generation, production-order management, inventory tracking, and real-time workflow dashboards — all within a modern shadcn/ui interface.',
+    link: '#',
+    glow: 'group-hover:shadow-cyan-500/20',
+    border: 'hover:border-cyan-500/40',
+    badge: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',
+  },
+  {
+    title: 'Edunaa',
+    image: '/images/edunaa.svg',
+    tech: ['ReactJS', 'Django', 'AWS', 'Stripe', 'Video.js', 'Redux'],
+    description:
+      'An educational marketplace for East Africa connecting learners with course content via video streaming, progress tracking, and quiz participation. Features certificate generation, social logins, and a fully integrated Stripe payments flow backed by a Django REST API with AWS media delivery.',
+    link: '#',
+    glow: 'group-hover:shadow-pink-500/20',
+    border: 'hover:border-pink-500/40',
+    badge: 'bg-pink-500/10 text-pink-300 border-pink-500/20',
+  },
+]
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -81,7 +117,6 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       className={`group rounded-2xl overflow-hidden bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 ${project.border} transition-colors duration-300 shadow-xl ${project.glow}`}
     >
       <div className="relative h-52 overflow-hidden">
-        {/* gradient overlay fades on hover to reveal more of the image */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10 z-10 group-hover:from-black/30 group-hover:via-black/10 group-hover:to-transparent transition-all duration-500" />
         <Image
           src={imgSrc(project.image)}
@@ -90,13 +125,14 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
           className="object-cover group-hover:scale-105 transition-transform duration-700"
           unoptimized
         />
-        {/* "Live preview" badge slides in on hover */}
-        <div className="absolute top-3 right-3 z-20 translate-y-[-6px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-white text-xs font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Live
-          </span>
-        </div>
+        {project.link !== '#' && (
+          <div className="absolute top-3 right-3 z-20 translate-y-[-6px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-white text-xs font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Live
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="p-6">
@@ -104,15 +140,12 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
         <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-5">
           {project.tech.map((t) => (
-            <span
-              key={t}
-              className={`text-xs px-2.5 py-1 rounded-full border ${project.badge}`}
-            >
+            <span key={t} className={`text-xs px-2.5 py-1 rounded-full border ${project.badge}`}>
               {t}
             </span>
           ))}
         </div>
-        {project.link !== '#' && (
+        {project.link !== '#' ? (
           <a
             href={project.link}
             target="_blank"
@@ -122,11 +155,88 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
             View Project
             <span className="group-hover/link:translate-x-1 transition-transform">→</span>
           </a>
-        )}
-        {project.link === '#' && (
-          <span className="text-sm text-slate-600 italic">Coming soon</span>
+        ) : (
+          <span className="text-sm text-slate-500 dark:text-slate-600 italic">Private / Internal</span>
         )}
       </div>
+    </motion.div>
+  )
+}
+
+function MoreProjectsModal({ onClose }: { onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+      {/* Panel */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 16 }}
+        transition={{ duration: 0.25 }}
+        className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-black/10 dark:border-white/10 sticky top-0 bg-white dark:bg-zinc-900 z-10">
+          <div>
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white">More Projects</h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Additional work & side projects</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+            aria-label="Close modal"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Project grid */}
+        <div className="p-6 grid sm:grid-cols-2 gap-6">
+          {moreProjects.map((project, i) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: i * 0.1 }}
+              className={`group rounded-2xl overflow-hidden bg-black/[0.03] dark:bg-white/5 border border-black/10 dark:border-white/10 ${project.border} transition-colors duration-300 shadow-lg ${project.glow}`}
+            >
+              <div className="relative h-44 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10 z-10 group-hover:from-black/30 group-hover:via-black/10 group-hover:to-transparent transition-all duration-500" />
+                <Image
+                  src={imgSrc(project.image)}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  unoptimized
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">{project.title}</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((t) => (
+                    <span key={t} className={`text-xs px-2.5 py-1 rounded-full border ${project.badge}`}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </motion.div>
   )
 }
@@ -134,6 +244,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
 export default function Projects() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <section id="projects" className="py-24 px-4 bg-white/[0.02]">
@@ -152,7 +263,31 @@ export default function Projects() {
             <ProjectCard key={project.title} project={project} index={i} />
           ))}
         </div>
+
+        {/* See More button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-10 flex justify-center"
+        >
+          <button
+            onClick={() => setModalOpen(true)}
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-indigo-500/40 text-indigo-400 hover:text-indigo-300 hover:border-indigo-400/70 hover:bg-indigo-500/10 transition-all duration-300 text-sm font-medium"
+          >
+            See More Projects
+            <span className="group-hover:rotate-90 transition-transform duration-300">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+            </span>
+          </button>
+        </motion.div>
       </div>
+
+      <AnimatePresence>
+        {modalOpen && <MoreProjectsModal onClose={() => setModalOpen(false)} />}
+      </AnimatePresence>
     </section>
   )
 }
