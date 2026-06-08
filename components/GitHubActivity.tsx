@@ -59,9 +59,9 @@ async function fetchProfile(): Promise<GitHubProfile | null> {
   }
 }
 
-// Shared query params for all github-readme-stats images
-const GRS_BASE = 'https://github-readme-stats.vercel.app/api'
-const GRS_PARAMS = 'theme=transparent&hide_border=true&title_color=6366f1&icon_color=6366f1&text_color=64748b&bg_color=00000000'
+// Self-hosted github-readme-stats instance (avoids public rate limits)
+const GRS_BASE = 'https://github-readme-stats-surajfc.vercel.app/api'
+const GRS_PARAMS = 'theme=swift&hide_border=false&include_all_commits=true&count_private=true&show_icons=true&cache_seconds=1800'
 
 export default async function GitHubActivity() {
   const [repos, profile] = await Promise.all([fetchRepos(), fetchProfile()])
@@ -87,19 +87,19 @@ export default async function GitHubActivity() {
 
         {/* GitHub Stats + Top Languages */}
         <div className="grid md:grid-cols-2 gap-4 mb-4">
-          <div className="p-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center overflow-hidden">
+          <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${GRS_BASE}?username=SurajFc&show_icons=true&count_private=true&include_all_commits=true&${GRS_PARAMS}`}
+              src={`${GRS_BASE}?username=SurajFc&${GRS_PARAMS}`}
               alt="Suraj's GitHub stats"
               className="w-full max-w-sm"
               loading="lazy"
             />
           </div>
-          <div className="p-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center overflow-hidden">
+          <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${GRS_BASE}/top-langs/?username=SurajFc&layout=compact&langs_count=8&${GRS_PARAMS}`}
+              src={`${GRS_BASE}/top-langs/?username=SurajFc&theme=swift&hide_border=false&layout=compact&langs_count=10&cache_seconds=1800`}
               alt="Suraj's top languages"
               className="w-full max-w-sm"
               loading="lazy"
@@ -108,10 +108,10 @@ export default async function GitHubActivity() {
         </div>
 
         {/* Streak Stats */}
-        <div className="p-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center overflow-hidden mb-10">
+        <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden mb-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://streak-stats.demolab.com/?user=SurajFc&theme=transparent&hide_border=true&stroke=6366f1&ring=6366f1&fire=f97316&currStreakNum=64748b&sideNums=64748b&currStreakLabel=6366f1&sideLabels=64748b&dates=64748b&background=00000000"
+            src="https://streak-stats.demolab.com/?user=SurajFc&theme=swift&hide_border=false"
             alt="Suraj's GitHub streak stats"
             className="w-full max-w-2xl"
             loading="lazy"
@@ -126,7 +126,7 @@ export default async function GitHubActivity() {
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-3 font-medium">Contribution Activity</p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://github-activity-graph.vercel.app/graph?username=SurajFc&theme=react-dark&hide_border=true&area=true&bg_color=transparent&color=818cf8&line=6366f1&point=6366f1&area_color=6366f1"
+            src="https://github-readme-activity-graph.vercel.app/graph?username=SurajFc&theme=react-dark&hide_border=true&area=true"
             alt="GitHub contribution activity graph for SurajFc"
             className="w-full rounded"
             loading="lazy"
