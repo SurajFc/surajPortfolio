@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1200"/>
+      <stop offset="100%" style="stop-color:#1a0f00"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#eab308"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <!-- Grid -->
+  <g stroke="#ffffff05" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="270" x2="800" y2="270"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="600" y1="0" x2="600" y2="450"/>
+  </g>
+
+  <!-- Nav -->
+  <rect x="40" y="18" width="720" height="48" rx="10" fill="#ffffff08"/>
+  <rect x="58" y="30" width="100" height="24" rx="6" fill="url(#accent)" opacity="0.85"/>
+  <text x="108" y="47" font-family="sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="bold">OppVenuz</text>
+  <rect x="480" y="34" width="80" height="14" rx="7" fill="#ffffff10"/>
+  <rect x="572" y="34" width="80" height="14" rx="7" fill="#ffffff10"/>
+  <rect x="664" y="32" width="76" height="18" rx="9" fill="url(#accent)" opacity="0.7"/>
+
+  <!-- Hero search bar -->
+  <rect x="120" y="85" width="560" height="52" rx="26" fill="#ffffff0d" stroke="#eab30830" stroke-width="1.5"/>
+  <circle cx="160" cy="111" r="14" fill="#eab30820"/>
+  <text x="152" y="116" font-family="sans-serif" font-size="14" fill="#eab308">⌕</text>
+  <rect x="185" y="103" width="280" height="16" rx="4" fill="#ffffff10"/>
+  <rect x="575" y="101" width="82" height="20" rx="10" fill="url(#accent)" opacity="0.8"/>
+
+  <!-- Vendor cards -->
+  <rect x="40" y="160" width="165" height="180" rx="14" fill="#ffffff08" stroke="#eab30820" stroke-width="1"/>
+  <rect x="40" y="160" width="165" height="80" rx="14" fill="#eab30815"/>
+  <rect x="40" y="220" width="165" height="20" rx="0" fill="#eab30815"/>
+  <text x="68" y="216" font-family="sans-serif" font-size="10" fill="#94a3b8">📍 Pune, MH</text>
+  <text x="55" y="252" font-family="sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">Royal Banquet Hall</text>
+  <text x="55" y="268" font-family="sans-serif" font-size="10" fill="#94a3b8">Venue · ₹80,000/event</text>
+  <rect x="55" y="278" width="60" height="14" rx="7" fill="#eab30820"/>
+  <text x="85" y="289" font-family="sans-serif" font-size="9" fill="#eab308" text-anchor="middle">★ 4.8</text>
+  <rect x="55" y="302" width="130" height="22" rx="11" fill="url(#accent)" opacity="0.7"/>
+  <text x="120" y="317" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Book Now</text>
+
+  <rect x="220" y="160" width="165" height="180" rx="14" fill="#ffffff08" stroke="#eab30820" stroke-width="1"/>
+  <rect x="220" y="160" width="165" height="80" rx="14" fill="#f9731615"/>
+  <rect x="220" y="220" width="165" height="20" rx="0" fill="#f9731615"/>
+  <text x="248" y="216" font-family="sans-serif" font-size="10" fill="#94a3b8">📍 Mumbai, MH</text>
+  <text x="235" y="252" font-family="sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">The Decor Studio</text>
+  <text x="235" y="268" font-family="sans-serif" font-size="10" fill="#94a3b8">Decorator · ₹40,000</text>
+  <rect x="235" y="278" width="60" height="14" rx="7" fill="#f9731620"/>
+  <text x="265" y="289" font-family="sans-serif" font-size="9" fill="#f97316" text-anchor="middle">★ 4.6</text>
+  <rect x="235" y="302" width="130" height="22" rx="11" fill="url(#accent)" opacity="0.7"/>
+  <text x="300" y="317" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Book Now</text>
+
+  <rect x="400" y="160" width="165" height="180" rx="14" fill="#ffffff08" stroke="#eab30820" stroke-width="1"/>
+  <rect x="400" y="160" width="165" height="80" rx="14" fill="#eab30812"/>
+  <rect x="400" y="220" width="165" height="20" rx="0" fill="#eab30812"/>
+  <text x="428" y="216" font-family="sans-serif" font-size="10" fill="#94a3b8">📍 Delhi, DL</text>
+  <text x="415" y="252" font-family="sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">Spice Garden Catering</text>
+  <text x="415" y="268" font-family="sans-serif" font-size="10" fill="#94a3b8">Caterer · ₹650/plate</text>
+  <rect x="415" y="278" width="60" height="14" rx="7" fill="#eab30820"/>
+  <text x="445" y="289" font-family="sans-serif" font-size="9" fill="#eab308" text-anchor="middle">★ 4.9</text>
+  <rect x="415" y="302" width="130" height="22" rx="11" fill="url(#accent)" opacity="0.7"/>
+  <text x="480" y="317" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Book Now</text>
+
+  <rect x="580" y="160" width="165" height="180" rx="14" fill="#ffffff08" stroke="#eab30820" stroke-width="1"/>
+  <rect x="580" y="160" width="165" height="80" rx="14" fill="#f9731612"/>
+  <rect x="580" y="220" width="165" height="20" rx="0" fill="#f9731612"/>
+  <text x="608" y="216" font-family="sans-serif" font-size="10" fill="#94a3b8">📍 Bangalore, KA</text>
+  <text x="595" y="252" font-family="sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">LensArt Photography</text>
+  <text x="595" y="268" font-family="sans-serif" font-size="10" fill="#94a3b8">Photographer · ₹25,000</text>
+  <rect x="595" y="278" width="60" height="14" rx="7" fill="#f9731620"/>
+  <text x="625" y="289" font-family="sans-serif" font-size="9" fill="#f97316" text-anchor="middle">★ 4.7</text>
+  <rect x="595" y="302" width="130" height="22" rx="11" fill="url(#accent)" opacity="0.7"/>
+  <text x="660" y="317" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Book Now</text>
+
+  <!-- Bottom bar -->
+  <rect x="40" y="362" width="720" height="56" rx="12" fill="#ffffff06" stroke="#eab30815" stroke-width="1"/>
+  <text x="80" y="385" font-family="sans-serif" font-size="10" fill="#94a3b8">Vendors Listed</text>
+  <text x="80" y="403" font-family="sans-serif" font-size="16" font-weight="bold" fill="#eab308">5,000+</text>
+  <text x="280" y="385" font-family="sans-serif" font-size="10" fill="#94a3b8">Events Planned</text>
+  <text x="280" y="403" font-family="sans-serif" font-size="16" font-weight="bold" fill="#f97316">12,000+</text>
+  <text x="480" y="385" font-family="sans-serif" font-size="10" fill="#94a3b8">Cities</text>
+  <text x="480" y="403" font-family="sans-serif" font-size="16" font-weight="bold" fill="#eab308">50+</text>
+  <text x="630" y="385" font-family="sans-serif" font-size="10" fill="#94a3b8">Platform</text>
+  <text x="630" y="403" font-family="sans-serif" font-size="14" font-weight="bold" fill="#f97316">OppVenuz</text>
+</svg>

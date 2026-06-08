@@ -30,15 +30,15 @@ const projects: Project[] = [
     badge: 'bg-orange-500/10 text-orange-300 border-orange-500/20',
   },
   {
-    title: 'PeriopMD',
-    image: '/images/PeriopMD.png',
-    tech: ['ReactJS', 'Redux', 'MaterialUI', 'Stripe'],
+    title: 'Balajee ERP',
+    image: '/images/balajee.svg',
+    tech: ['React', 'TypeScript', 'Turborepo', 'Tailwind v4', 'shadcn/ui'],
     description:
-      'A medical portal where hospitals and individual practitioners register via subscription. Provides test recommendations based on conditions and age, with custom test and condition creation.',
-    link: 'https://practitioner.periopmd.org',
-    glow: 'group-hover:shadow-blue-500/20',
-    border: 'hover:border-blue-500/40',
-    badge: 'bg-blue-500/10 text-blue-300 border-blue-500/20',
+      'Enterprise resource planning system built for Balajee Glass Industries. A Turborepo monorepo with Vite + React + TypeScript powering estimate generation, production-order management, inventory tracking, and real-time workflow dashboards — all within a modern shadcn/ui interface.',
+    link: '#',
+    glow: 'group-hover:shadow-cyan-500/20',
+    border: 'hover:border-cyan-500/40',
+    badge: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',
   },
   {
     title: 'TTA Connect',
@@ -66,15 +66,26 @@ const projects: Project[] = [
 
 const moreProjects: Project[] = [
   {
-    title: 'Balajee ERP',
-    image: '/images/balajee.svg',
-    tech: ['React', 'TypeScript', 'Turborepo', 'Tailwind v4', 'shadcn/ui'],
+    title: 'OppVenuz',
+    image: '/images/oppvenuz.svg',
+    tech: ['ReactJS', 'React Native', 'TypeScript', 'Django', 'Firebase'],
     description:
-      'Enterprise resource planning system built for Balajee Glass Industries. A Turborepo monorepo with Vite + React + TypeScript powering estimate generation, production-order management, inventory tracking, and real-time workflow dashboards — all within a modern shadcn/ui interface.',
-    link: '#',
-    glow: 'group-hover:shadow-cyan-500/20',
-    border: 'hover:border-cyan-500/40',
-    badge: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',
+      'A full-stack event planning marketplace connecting users with verified vendors — venues, caterers, decorators, and photographers. Features smart vendor matching, real-time chat, booking management, and vendor dashboards. Available on web, iOS, and Android.',
+    link: 'https://www.oppvenuz.com/',
+    glow: 'group-hover:shadow-yellow-500/20',
+    border: 'hover:border-yellow-500/40',
+    badge: 'bg-yellow-500/10 text-yellow-300 border-yellow-500/20',
+  },
+  {
+    title: 'PeriopMD',
+    image: '/images/PeriopMD.png',
+    tech: ['ReactJS', 'Redux', 'MaterialUI', 'Stripe'],
+    description:
+      'A medical portal where hospitals and individual practitioners register via subscription. Provides test recommendations based on conditions and age, with custom test and condition creation.',
+    link: 'https://practitioner.periopmd.org',
+    glow: 'group-hover:shadow-blue-500/20',
+    border: 'hover:border-blue-500/40',
+    badge: 'bg-blue-500/10 text-blue-300 border-blue-500/20',
   },
   {
     title: 'Edunaa',
