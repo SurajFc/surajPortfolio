@@ -153,7 +153,7 @@ export default function Terminal() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.4 }}
       className="block w-full max-w-2xl mx-auto mt-8 sm:mt-10"
-      onClick={() => inputRef.current?.focus()}
+      onClick={() => inputRef.current?.focus({ preventScroll: true })}
     >
       {/* Title bar */}
       <div className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 rounded-t-xl border border-white/10 border-b-0">
