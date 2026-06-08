@@ -1,6 +1,7 @@
 import SectionHeading from './SectionHeading'
 import RepoCards from './RepoCards'
 import GitHubStatPills from './GitHubStatPills'
+import GitHubNativeStats, { type LangStat } from './GitHubNativeStats'
 import { FaGithub } from 'react-icons/fa'
 
 interface Repo {
@@ -31,7 +32,7 @@ const PINNED_REPOS = [
 
 const GH_HEADERS = { Accept: 'application/vnd.github+json' }
 
-async function fetchRepos(): Promise<Repo[]> {
+async function fetchPinnedRepos(): Promise<Repo[]> {
   try {
     const results = await Promise.all(
       PINNED_REPOS.map((name) =>
@@ -42,6 +43,18 @@ async function fetchRepos(): Promise<Repo[]> {
       )
     )
     return results.filter(Boolean) as Repo[]
+  } catch {
+    return []
+  }
+}
+
+async function fetchAllRepos(): Promise<Repo[]> {
+  try {
+    const r = await fetch(
+      'https://api.github.com/users/SurajFc/repos?per_page=100&type=owner&sort=updated',
+      { headers: GH_HEADERS, cache: 'force-cache' }
+    )
+    return r.ok ? (r.json() as Promise<Repo[]>) : []
   } catch {
     return []
   }
@@ -59,16 +72,31 @@ async function fetchProfile(): Promise<GitHubProfile | null> {
   }
 }
 
-// Self-hosted github-readme-stats instance (avoids public rate limits)
-const GRS_BASE = 'https://github-readme-stats-surajfc.vercel.app/api'
-const GRS_PARAMS = 'theme=swift&hide_border=false&include_all_commits=true&count_private=true&show_icons=true&cache_seconds=1800'
+function computeLanguages(repos: Repo[]): LangStat[] {
+  const counts: Record<string, number> = {}
+  for (const repo of repos) {
+    if (repo.language) counts[repo.language] = (counts[repo.language] ?? 0) + 1
+  }
+  const total = Object.values(counts).reduce((a, b) => a + b, 0)
+  if (total === 0) return []
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8)
+    .map(([name, count]) => ({ name, percent: Math.round((count / total) * 100) }))
+}
 
 export default async function GitHubActivity() {
-  const [repos, profile] = await Promise.all([fetchRepos(), fetchProfile()])
-  if (repos.length === 0) return null
+  const [pinnedRepos, allRepos, profile] = await Promise.all([
+    fetchPinnedRepos(),
+    fetchAllRepos(),
+    fetchProfile(),
+  ])
 
-  const totalStars = repos.reduce((acc, r) => acc + r.stargazers_count, 0)
-  const totalForks = repos.reduce((acc, r) => acc + r.forks_count, 0)
+  if (pinnedRepos.length === 0) return null
+
+  const totalStars = allRepos.reduce((acc, r) => acc + r.stargazers_count, 0)
+  const totalForks = allRepos.reduce((acc, r) => acc + r.forks_count, 0)
+  const languages  = computeLanguages(allRepos)
 
   return (
     <section className="py-24 px-4 bg-black/[0.02] dark:bg-white/[0.02]">
@@ -79,35 +107,22 @@ export default async function GitHubActivity() {
 
         {/* Live stat pills */}
         <GitHubStatPills
-          publicRepos={profile?.public_repos ?? repos.length}
+          publicRepos={profile?.public_repos ?? pinnedRepos.length}
           totalStars={totalStars}
           followers={profile?.followers ?? 0}
           totalForks={totalForks}
         />
 
-        {/* GitHub Stats + Top Languages */}
-        <div className="grid md:grid-cols-2 gap-4 mb-4">
-          <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${GRS_BASE}?username=SurajFc&${GRS_PARAMS}`}
-              alt="Suraj's GitHub stats"
-              className="w-full max-w-sm"
-              loading="lazy"
-            />
-          </div>
-          <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${GRS_BASE}/top-langs/?username=SurajFc&theme=swift&hide_border=false&layout=compact&langs_count=10&cache_seconds=1800`}
-              alt="Suraj's top languages"
-              className="w-full max-w-sm"
-              loading="lazy"
-            />
-          </div>
-        </div>
+        {/* Native GitHub Stats + Top Languages cards */}
+        <GitHubNativeStats
+          totalStars={totalStars}
+          totalForks={totalForks}
+          publicRepos={profile?.public_repos ?? allRepos.length}
+          followers={profile?.followers ?? 0}
+          languages={languages}
+        />
 
-        {/* Streak Stats */}
+        {/* Streak Stats (needs auth for native — keeping the image) */}
         <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden mb-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -119,7 +134,7 @@ export default async function GitHubActivity() {
         </div>
 
         {/* Pinned repo cards */}
-        <RepoCards repos={repos} />
+        <RepoCards repos={pinnedRepos} />
 
         {/* Contribution activity graph */}
         <div className="mt-10 p-4 rounded-xl bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 overflow-hidden">
