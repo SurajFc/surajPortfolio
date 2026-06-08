@@ -60,7 +60,8 @@ async function fetchProfile(): Promise<GitHubProfile | null> {
 }
 
 const GRS = 'https://github-readme-stats-surajfc.vercel.app/api'
-const GRS_PARAMS = 'theme=swift&hide_border=false&include_all_commits=true&count_private=true&show_icons=true&cache_seconds=1800'
+const GRS_LIGHT = 'theme=swift&hide_border=false&include_all_commits=true&count_private=true&show_icons=true&cache_seconds=1800'
+const GRS_DARK  = 'theme=transparent&hide_border=true&title_color=818cf8&icon_color=818cf8&text_color=94a3b8&bg_color=00000000&include_all_commits=true&count_private=true&show_icons=true&cache_seconds=1800'
 
 export default async function GitHubActivity() {
   const [repos, profile] = await Promise.all([fetchRepos(), fetchProfile()])
@@ -86,35 +87,28 @@ export default async function GitHubActivity() {
 
         {/* GitHub Stats + Top Languages (self-hosted instance) */}
         <div className="grid md:grid-cols-2 gap-4 mb-4">
-          <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden">
+          {/* Stats card */}
+          <div className="rounded-xl border border-black/10 dark:border-white/10 overflow-hidden bg-white dark:bg-transparent flex items-center justify-center p-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${GRS}?username=SurajFc&${GRS_PARAMS}`}
-              alt="Suraj's GitHub stats"
-              className="w-full"
-              loading="lazy"
-            />
+            <img src={`${GRS}?username=SurajFc&${GRS_LIGHT}`} alt="Suraj's GitHub stats" className="w-full block dark:hidden" loading="lazy" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${GRS}?username=SurajFc&${GRS_DARK}`}  alt="Suraj's GitHub stats" className="w-full hidden dark:block" loading="lazy" />
           </div>
-          <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden">
+          {/* Top Languages card */}
+          <div className="rounded-xl border border-black/10 dark:border-white/10 overflow-hidden bg-white dark:bg-transparent flex items-center justify-center p-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${GRS}/top-langs/?username=SurajFc&theme=swift&hide_border=false&layout=compact&langs_count=10&cache_seconds=1800`}
-              alt="Suraj's top languages"
-              className="w-full"
-              loading="lazy"
-            />
+            <img src={`${GRS}/top-langs/?username=SurajFc&theme=swift&hide_border=false&layout=compact&langs_count=10&cache_seconds=1800`}            alt="Suraj's top languages" className="w-full block dark:hidden" loading="lazy" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${GRS}/top-langs/?username=SurajFc&theme=transparent&hide_border=true&title_color=818cf8&text_color=94a3b8&bg_color=00000000&layout=compact&langs_count=10&cache_seconds=1800`} alt="Suraj's top languages" className="w-full hidden dark:block" loading="lazy" />
           </div>
         </div>
 
         {/* Streak Stats */}
-        <div className="p-2 rounded-xl bg-white border border-black/10 flex items-center justify-center overflow-hidden mb-10">
+        <div className="rounded-xl border border-black/10 dark:border-white/10 overflow-hidden bg-white dark:bg-transparent flex items-center justify-center p-2 mb-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://streak-stats.demolab.com/?user=SurajFc&theme=swift&hide_border=false"
-            alt="Suraj's GitHub streak stats"
-            className="w-full max-w-2xl"
-            loading="lazy"
-          />
+          <img src="https://streak-stats.demolab.com/?user=SurajFc&theme=swift&hide_border=false"       alt="Suraj's GitHub streak stats" className="w-full max-w-2xl block dark:hidden" loading="lazy" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://streak-stats.demolab.com/?user=SurajFc&theme=transparent&hide_border=true&stroke=818cf8&ring=818cf8&fire=f97316&currStreakNum=94a3b8&sideNums=94a3b8&currStreakLabel=818cf8&sideLabels=64748b&dates=64748b&background=00000000" alt="Suraj's GitHub streak stats" className="w-full max-w-2xl hidden dark:block" loading="lazy" />
         </div>
 
         {/* Pinned repo cards */}
