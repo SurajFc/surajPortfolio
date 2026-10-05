@@ -51,10 +51,22 @@ export const resumeData = {
         'AI-native Intelligent Health Record (IHR) integrating EMRs, labs, and wearables; uses clinical LLMs and NLP to guide personalized wellness protocols.',
     },
     {
-      name: 'PeriopMD',
-      tech: 'ReactJS, Redux, MaterialUI, Stripe',
+      name: 'AiTap',
+      tech: 'React, Vite, TypeScript, Supabase',
       description:
-        'Medical subscription portal for hospitals and practitioners with AI-driven test recommendations based on conditions and age.',
+        'NFC/QR digital business-card platform with an admin panel, QR designer, batch code printing, and a door-to-door seller flow. Live at aitap.in.',
+    },
+    {
+      name: 'Jagga Naap',
+      tech: 'React, Vite, Mapbox GL, PWA',
+      description:
+        'Land-area measurement tool for Nepal — trace a plot on satellite imagery and read its area in ropani-aana-paisa-daam and bigha-katha-dhur. Live at jagganaap.netlify.app.',
+    },
+    {
+      name: 'RouteReel',
+      tech: 'React, MapLibre GL, mediabunny',
+      description:
+        'Browser tool that animates a route on a 3D map and exports it as a cinematic travel/moto video (MP4/WebM/GIF). Runs fully client-side, no backend.',
     },
     {
       name: 'TTA Connect',
@@ -90,6 +102,7 @@ export const resumeData = {
     { category: 'Tools & DevOps', items: 'AWS, Firebase, Docker, Git/GitHub, Turborepo, Stripe, Twilio, Web3, Jenkins, Figma, Postman',       pdfItems: 'AWS, Firebase, Docker, Git/GitHub, Stripe, Twilio, Figma, Jira' },
   ],
   certifications: [
+    'AWS Certified Cloud Practitioner (CLF-C01) — Amazon Web Services',
     'Red Hat Certified System Administrator (RHCSA) — Red Hat, August 2018 (ID: 180-177-776)',
     'The Complete Python Bootcamp — Udemy',
     'Complete React Developer in 2024 — Udemy',

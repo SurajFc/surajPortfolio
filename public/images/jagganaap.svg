@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1410"/>
+      <stop offset="100%" style="stop-color:#0c1a14"/>
+    </linearGradient>
+    <linearGradient id="plot" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#14b8a6" stop-opacity="0.35"/>
+      <stop offset="100%" style="stop-color:#0d9488" stop-opacity="0.2"/>
+    </linearGradient>
+    <pattern id="sat" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="#132a1f"/>
+      <rect x="0" y="0" width="30" height="30" fill="#16311f" opacity="0.6"/>
+      <rect x="30" y="30" width="30" height="30" fill="#0f2418" opacity="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <!-- satellite texture -->
+  <rect width="800" height="450" fill="url(#sat)" opacity="0.5"/>
+  <!-- faux fields / roads -->
+  <g stroke="#2a4a38" stroke-width="2" opacity="0.5" fill="none">
+    <path d="M 0 180 Q 300 150 800 200"/>
+    <path d="M 200 0 Q 260 250 180 450"/>
+    <path d="M 500 0 Q 560 220 620 450"/>
+  </g>
+
+  <!-- traced plot polygon with corner handles -->
+  <polygon points="280,150 540,130 580,300 340,340 250,250" fill="url(#plot)" stroke="#2dd4bf" stroke-width="3"/>
+  <g fill="#f0fdfa" stroke="#0d9488" stroke-width="2.5">
+    <circle cx="280" cy="150" r="7"/>
+    <circle cx="540" cy="130" r="7"/>
+    <circle cx="580" cy="300" r="7"/>
+    <circle cx="340" cy="340" r="7"/>
+    <circle cx="250" cy="250" r="7"/>
+  </g>
+
+  <!-- measurement panel -->
+  <rect x="560" y="40" width="210" height="190" rx="12" fill="#0a1410ee" stroke="#14b8a633" stroke-width="1"/>
+  <text x="578" y="66" font-family="sans-serif" font-size="12" font-weight="bold" fill="#5eead4">Plot Area</text>
+  <line x1="578" y1="74" x2="752" y2="74" stroke="#14b8a622"/>
+  <text x="578" y="98" font-family="monospace" font-size="15" font-weight="bold" fill="#f0fdfa">2 Ropani 3 Aana</text>
+  <text x="578" y="118" font-family="monospace" font-size="11" fill="#94a3b8">1 Paisa 2 Daam</text>
+  <text x="578" y="146" font-family="monospace" font-size="13" fill="#5eead4">1 Bigha 4 Katha</text>
+  <text x="578" y="170" font-family="monospace" font-size="11" fill="#94a3b8">1,196 m² · 0.30 ac</text>
+  <text x="578" y="194" font-family="monospace" font-size="10" fill="#64748b">± 18 m²  ·  perimeter 142 m</text>
+  <rect x="578" y="204" width="80" height="18" rx="9" fill="#14b8a620"/>
+  <text x="618" y="217" font-family="sans-serif" font-size="10" fill="#5eead4" text-anchor="middle">🇳🇵 Nepal</text>
+
+  <!-- lang toggle + search -->
+  <rect x="40" y="40" width="150" height="34" rx="17" fill="#0a1410cc" stroke="#14b8a633"/>
+  <text x="60" y="62" font-family="sans-serif" font-size="12" fill="#94a3b8">🔍 Search ward…</text>
+  <rect x="40" y="86" width="90" height="26" rx="13" fill="#14b8a620" stroke="#14b8a640"/>
+  <text x="85" y="103" font-family="sans-serif" font-size="11" fill="#5eead4" text-anchor="middle">EN / नेपाली</text>
+
+  <text x="40" y="420" font-family="monospace" font-size="13" fill="#64748b">Jagga Naap — जग्गा नाप · land measure</text>
+</svg>
