@@ -7,10 +7,10 @@ import { useTilt } from '@/lib/useTilt'
 
 const certifications = [
   {
-    name: 'AWS Certified Cloud Practitioner (CLF-C01)',
+    name: 'AWS Certified AI Practitioner (AIF-C01)',
     issuer: 'Amazon Web Services',
     meta: '',
-    icon: '☁️',
+    icon: '🤖',
   },
   {
     name: 'Red Hat Certified System Administrator (RHCSA)',

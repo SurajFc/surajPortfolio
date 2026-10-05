@@ -102,7 +102,7 @@ export const resumeData = {
     { category: 'Tools & DevOps', items: 'AWS, Firebase, Docker, Git/GitHub, Turborepo, Stripe, Twilio, Web3, Jenkins, Figma, Postman',       pdfItems: 'AWS, Firebase, Docker, Git/GitHub, Stripe, Twilio, Figma, Jira' },
   ],
   certifications: [
-    'AWS Certified Cloud Practitioner (CLF-C01) — Amazon Web Services',
+    'AWS Certified AI Practitioner (AIF-C01) — Amazon Web Services',
     'Red Hat Certified System Administrator (RHCSA) — Red Hat, August 2018 (ID: 180-177-776)',
     'The Complete Python Bootcamp — Udemy',
     'Complete React Developer in 2024 — Udemy',
