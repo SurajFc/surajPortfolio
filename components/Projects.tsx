@@ -66,6 +66,39 @@ const projects: Project[] = [
 
 const moreProjects: Project[] = [
   {
+    title: 'RouteReel',
+    image: '/images/routereel.svg',
+    tech: ['React', 'Vite', 'MapLibre GL', 'mediabunny', 'gifenc'],
+    description:
+      'A browser-based tool that animates a route on a 3D map and exports it as a cinematic travel/moto video — the camera chases a vehicle along the road, then pulls back to show the whole trip. Import GPX/KML/GeoJSON, pick templates & vehicles, and export MP4, WebM, or GIF in any aspect ratio. Runs fully client-side, no backend.',
+    link: 'https://github.com/SurajFc/RouteReel',
+    glow: 'group-hover:shadow-sky-500/20',
+    border: 'hover:border-sky-500/40',
+    badge: 'bg-sky-500/10 text-sky-300 border-sky-500/20',
+  },
+  {
+    title: 'AiTap',
+    image: '/images/aitap.svg',
+    tech: ['React', 'Vite', 'TypeScript', 'Tailwind', 'Supabase'],
+    description:
+      'An NFC/QR digital business-card platform — tap or scan to open a client profile with phone, WhatsApp, socials, Google review, UPI, and hours. Includes a role-based admin panel, QR designer, batch code printing, a door-to-door seller flow, and per-client analytics.',
+    link: 'https://aitap.in',
+    glow: 'group-hover:shadow-violet-500/20',
+    border: 'hover:border-violet-500/40',
+    badge: 'bg-violet-500/10 text-violet-300 border-violet-500/20',
+  },
+  {
+    title: 'Jagga Naap',
+    image: '/images/jagganaap.svg',
+    tech: ['React', 'Vite', 'Mapbox GL', 'PWA'],
+    description:
+      'A land-area measurement tool for Nepal — trace a plot on satellite imagery and read its area in the units Nepal actually uses (ropani-aana-paisa-daam and bigha-katha-dhur) plus m²/acres. Features plot splitting, GPS boundary walking, English/नेपाली UI, and offline PWA support. No backend.',
+    link: 'https://jagganaap.netlify.app',
+    glow: 'group-hover:shadow-teal-500/20',
+    border: 'hover:border-teal-500/40',
+    badge: 'bg-teal-500/10 text-teal-300 border-teal-500/20',
+  },
+  {
     title: 'OppVenuz',
     image: '/images/oppvenuz.svg',
     tech: ['ReactJS', 'React Native', 'TypeScript', 'Django', 'Firebase'],
